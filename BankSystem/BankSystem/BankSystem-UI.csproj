@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6DD00328-AD32-433C-9338-8094D6C58983}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BankSystem</RootNamespace>
+    <AssemblyName>BankSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="GlobalClasses\clsFormat.cs" />
+    <Compile Include="GlobalClasses\clsGlobal.cs" />
+    <Compile Include="GlobalClasses\clsUtil.cs" />
+    <Compile Include="GlobalClasses\clsValidation.cs" />
+    <Compile Include="GlobalClasses\EventLogger.cs" />
+    <Compile Include="Login\frmLoginWithCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\frmLoginWithCode.Designer.cs">
+      <DependentUpon>frmLoginWithCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="People\frmListPeople.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="People\frmListPeople.Designer.cs">
+      <DependentUpon>frmListPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Controls\ctrlUserCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\Controls\ctrlUserCard.Designer.cs">
+      <DependentUpon>ctrlUserCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmAddNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmAddNewUser.Designer.cs">
+      <DependentUpon>frmAddNewUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\frmListUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\frmListUsers.Designer.cs">
+      <DependentUpon>frmListUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Login\frmLoginWithCode.resx">
+      <DependentUpon>frmLoginWithCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="People\frmListPeople.resx">
+      <DependentUpon>frmListPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Controls\ctrlUserCard.resx">
+      <DependentUpon>ctrlUserCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmAddNewUser.resx">
+      <DependentUpon>frmAddNewUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\frmListUsers.resx">
+      <DependentUpon>frmListUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BankBusinessLayer\BankBusinessLayer.csproj">
+      <Project>{4867d27a-1cee-4dfe-9da1-1c662bbf8c4c}</Project>
+      <Name>BankBusinessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BankBackGroung.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Noto\NotoSans-Bold.ttf" />
+    <None Include="Resources\Noto\NotoSans-BoldItalic.ttf" />
+    <None Include="Resources\Noto\NotoSans-Italic.ttf" />
+    <None Include="Resources\Noto\NotoSans-Regular.ttf" />
+    <None Include="Resources\Roboto\Roboto-Black.ttf" />
+    <None Include="Resources\Roboto\Roboto-BlackItalic.ttf" />
+    <None Include="Resources\Roboto\Roboto-Bold.ttf" />
+    <None Include="Resources\Roboto\Roboto-BoldItalic.ttf" />
+    <None Include="Resources\Roboto\Roboto-Italic.ttf" />
+    <None Include="Resources\Roboto\Roboto-Light.ttf" />
+    <None Include="Resources\Roboto\Roboto-LightItalic.ttf" />
+    <None Include="Resources\Roboto\Roboto-Medium.ttf" />
+    <None Include="Resources\Roboto\Roboto-MediumItalic.ttf" />
+    <None Include="Resources\Roboto\Roboto-Regular.ttf" />
+    <None Include="Resources\Roboto\Roboto-Thin.ttf" />
+    <None Include="Resources\Roboto\Roboto-ThinItalic.ttf" />
+    <None Include="Resources\Roboto\RobotoCondensed-Bold.ttf" />
+    <None Include="Resources\Roboto\RobotoCondensed-BoldItalic.ttf" />
+    <None Include="Resources\Roboto\RobotoCondensed-Italic.ttf" />
+    <None Include="Resources\Roboto\RobotoCondensed-Light.ttf" />
+    <None Include="Resources\Roboto\RobotoCondensed-LightItalic.ttf" />
+    <None Include="Resources\Roboto\RobotoCondensed-Regular.ttf" />
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clients.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transaction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\currency_conversion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transaction %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lucid-origin_A_modern_and_elegant_banking_system_interface_background_suitable_for_a_Windows_-0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deposit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\withdrawal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paypal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\history %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ideogram-v3.0_a_suitable_photo_for_an_user_interface_for_a_bank_system_created_using_windows_f-0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lucid-origin_A_modern_and_elegant_banking_system_interface_background_suitable_for_a_Windows_-0 %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LoginImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gemini_Generated_Image_u5153vu5153vu515.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Clients\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\BankSystem\Lib\packages\Guna.UI2.WinForms.2.0.4.7\lib\net40\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors">
+      <HintPath>..\..\..\BankSystem\Lib\packages\MaterialDesignColors.5.3.0\lib\net8.0-windows7.0\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf">
+      <HintPath>..\..\..\BankSystem\Lib\packages\MaterialDesignThemes.5.3.0\lib\net8.0-windows7.0\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin">
+      <HintPath>..\..\..\BankSystem\Lib\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework">
+      <HintPath>..\..\..\BankSystem\Lib\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>..\..\..\BankSystem\Lib\packages\MetroFramework.Design.1.2.0.3\lib\net40\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts">
+      <HintPath>..\..\..\BankSystem\Lib\packages\MetroFramework.Fonts.1.2.0.3\lib\net40\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Xaml.Behaviors">
+      <HintPath>..\..\..\BankSystem\Lib\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.77\lib\net6.0-windows7.0\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors.DesignTools">
+      <HintPath>..\..\..\BankSystem\Lib\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.77\lib\net6.0-windows7.0\Design\Microsoft.Xaml.Behaviors.DesignTools.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Workflow.Runtime" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
+</Project>
