@@ -1,4 +1,5 @@
-﻿using DVLD;
+﻿using BankSystem.Clients;
+using DVLD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,8 +35,18 @@ namespace BankSystem
 
         private void menuDeposit_Click(object sender, EventArgs e) { }
         private void menuWithdraw_Click(object sender, EventArgs e) {  }
-        private void menuClients_Click(object sender, EventArgs e) {  }
-        private void menuUsers_Click(object sender, EventArgs e) {  }
+        private void menuClients_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmListClients();
+            frm.ShowDialog();
+
+
+        }
+        private void menuUsers_Click(object sender, EventArgs e) 
+        {
+            Form frm = new frmListUsers();
+            frm.ShowDialog();
+        }
         private void menuCurrency_Click(object sender, EventArgs e) {  }
         private void menuSettings_Click(object sender, EventArgs e) {  }
       

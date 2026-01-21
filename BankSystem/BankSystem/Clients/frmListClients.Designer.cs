@@ -29,122 +29,147 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAddNewClient = new System.Windows.Forms.Button();
             this.cbIsActive = new System.Windows.Forms.ComboBox();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
-            this.dgvPeople = new System.Windows.Forms.DataGridView();
+            this.dgvClients = new System.Windows.Forms.DataGridView();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pnlFilter = new System.Windows.Forms.Panel();
             this.pbUserImage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
+            this.pnlHeader.SuspendLayout();
+            this.pnlFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddNewClient
             // 
-            this.btnAddNewClient.Location = new System.Drawing.Point(826, 227);
+            this.btnAddNewClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnAddNewClient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNewClient.ForeColor = System.Drawing.Color.White;
+            this.btnAddNewClient.Location = new System.Drawing.Point(830, 15);
             this.btnAddNewClient.Name = "btnAddNewClient";
-            this.btnAddNewClient.Size = new System.Drawing.Size(81, 74);
-            this.btnAddNewClient.TabIndex = 131;
-            this.btnAddNewClient.UseVisualStyleBackColor = true;
+            this.btnAddNewClient.Size = new System.Drawing.Size(100, 40);
+            this.btnAddNewClient.TabIndex = 4;
+            this.btnAddNewClient.Text = "+ Add Client";
+            this.btnAddNewClient.UseVisualStyleBackColor = false;
+            this.btnAddNewClient.Click += new System.EventHandler(this.btnAddNewClient_Click);
             // 
             // cbIsActive
             // 
             this.cbIsActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbIsActive.FormattingEnabled = true;
             this.cbIsActive.Items.AddRange(new object[] {
             "All",
             "Yes",
             "No"});
-            this.cbIsActive.Location = new System.Drawing.Point(341, 280);
+            this.cbIsActive.Location = new System.Drawing.Point(260, 22);
             this.cbIsActive.Name = "cbIsActive";
-            this.cbIsActive.Size = new System.Drawing.Size(121, 21);
-            this.cbIsActive.TabIndex = 130;
+            this.cbIsActive.Size = new System.Drawing.Size(100, 21);
+            this.cbIsActive.TabIndex = 3;
             this.cbIsActive.Visible = false;
             // 
             // cbFilterBy
             // 
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilterBy.FormattingEnabled = true;
+            this.cbFilterBy.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbFilterBy.Items.AddRange(new object[] {
             "None",
             "User ID",
             "UserName",
-            "Person ID",
             "Full Name",
             "Is Active"});
-            this.cbFilterBy.Location = new System.Drawing.Point(108, 280);
+            this.cbFilterBy.Location = new System.Drawing.Point(90, 22);
             this.cbFilterBy.Name = "cbFilterBy";
-            this.cbFilterBy.Size = new System.Drawing.Size(210, 21);
-            this.cbFilterBy.TabIndex = 129;
+            this.cbFilterBy.Size = new System.Drawing.Size(160, 25);
+            this.cbFilterBy.TabIndex = 1;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 281);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(20, 25);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 20);
-            this.label3.TabIndex = 128;
+            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.TabIndex = 0;
             this.label3.Text = "Filter By:";
             // 
             // lblTitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTitle.Location = new System.Drawing.Point(345, 227);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(0, 140);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(258, 39);
-            this.lblTitle.TabIndex = 127;
+            this.lblTitle.Size = new System.Drawing.Size(950, 50);
+            this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Manage Clients";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtFilterValue
             // 
-            this.txtFilterValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFilterValue.Location = new System.Drawing.Point(341, 281);
-            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtFilterValue.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtFilterValue.Location = new System.Drawing.Point(260, 22);
             this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(238, 20);
-            this.txtFilterValue.TabIndex = 125;
+            this.txtFilterValue.Size = new System.Drawing.Size(200, 25);
+            this.txtFilterValue.TabIndex = 2;
             // 
-            // dgvPeople
+            // dgvClients
             // 
-            this.dgvPeople.AllowUserToAddRows = false;
-            this.dgvPeople.AllowUserToDeleteRows = false;
-            this.dgvPeople.AllowUserToResizeRows = false;
-            this.dgvPeople.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPeople.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPeople.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvPeople.Location = new System.Drawing.Point(12, 312);
-            this.dgvPeople.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dgvPeople.MultiSelect = false;
-            this.dgvPeople.Name = "dgvPeople";
-            this.dgvPeople.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPeople.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvPeople.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPeople.Size = new System.Drawing.Size(897, 307);
-            this.dgvPeople.TabIndex = 124;
-            this.dgvPeople.TabStop = false;
+            this.dgvClients.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.dgvClients.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvClients.BackgroundColor = System.Drawing.Color.Gray;
+            this.dgvClients.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvClients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgvClients.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvClients.ColumnHeadersHeight = 40;
+            this.dgvClients.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClients.EnableHeadersVisualStyles = false;
+            this.dgvClients.Location = new System.Drawing.Point(0, 270);
+            this.dgvClients.Name = "dgvClients";
+            this.dgvClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClients.Size = new System.Drawing.Size(950, 430);
+            this.dgvClients.TabIndex = 0;
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.pnlHeader.Controls.Add(this.lblTitle);
+            this.pnlHeader.Controls.Add(this.pbUserImage);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(950, 200);
+            this.pnlHeader.TabIndex = 2;
+            // 
+            // pnlFilter
+            // 
+            this.pnlFilter.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlFilter.Controls.Add(this.label3);
+            this.pnlFilter.Controls.Add(this.cbFilterBy);
+            this.pnlFilter.Controls.Add(this.txtFilterValue);
+            this.pnlFilter.Controls.Add(this.cbIsActive);
+            this.pnlFilter.Controls.Add(this.btnAddNewClient);
+            this.pnlFilter.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlFilter.Location = new System.Drawing.Point(0, 200);
+            this.pnlFilter.Name = "pnlFilter";
+            this.pnlFilter.Size = new System.Drawing.Size(950, 70);
+            this.pnlFilter.TabIndex = 1;
             // 
             // pbUserImage
             // 
-            this.pbUserImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbUserImage.InitialImage = null;
-            this.pbUserImage.Location = new System.Drawing.Point(364, 33);
-            this.pbUserImage.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pbUserImage.Image = global::BankSystem.Properties.Resources.clients__2_;
+            this.pbUserImage.Location = new System.Drawing.Point(415, 20);
             this.pbUserImage.Name = "pbUserImage";
-            this.pbUserImage.Size = new System.Drawing.Size(220, 189);
+            this.pbUserImage.Size = new System.Drawing.Size(120, 110);
             this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbUserImage.TabIndex = 126;
+            this.pbUserImage.TabIndex = 1;
             this.pbUserImage.TabStop = false;
             // 
             // frmListClients
@@ -152,26 +177,27 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(920, 652);
-            this.Controls.Add(this.btnAddNewClient);
-            this.Controls.Add(this.cbIsActive);
-            this.Controls.Add(this.cbFilterBy);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.pbUserImage);
-            this.Controls.Add(this.txtFilterValue);
-            this.Controls.Add(this.dgvPeople);
+            this.ClientSize = new System.Drawing.Size(950, 700);
+            this.Controls.Add(this.dgvClients);
+            this.Controls.Add(this.pnlFilter);
+            this.Controls.Add(this.pnlHeader);
             this.Name = "frmListClients";
-            this.Text = "frmListClients";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Client Management System";
+            this.Load += new System.EventHandler(this.frmListClients_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).EndInit();
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlFilter.ResumeLayout(false);
+            this.pnlFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.Panel pnlFilter;
         private System.Windows.Forms.Button btnAddNewClient;
         private System.Windows.Forms.ComboBox cbIsActive;
         private System.Windows.Forms.ComboBox cbFilterBy;
@@ -179,6 +205,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbUserImage;
         private System.Windows.Forms.TextBox txtFilterValue;
-        private System.Windows.Forms.DataGridView dgvPeople;
+        private System.Windows.Forms.DataGridView dgvClients;
     }
 }
