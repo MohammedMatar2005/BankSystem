@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BankSystem.Users
 {
-    public partial class frmAddNewUser : Form
+    public partial class frmShowUserInfo : Form
     {
-        public frmAddNewUser()
+        public frmShowUserInfo()
         {
             InitializeComponent();
         }

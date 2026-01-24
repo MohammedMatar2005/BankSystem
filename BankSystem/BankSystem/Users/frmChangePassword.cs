@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BankSystem.Users.Controls
+namespace BankSystem.Users
 {
-    public partial class ctrlUserCard : UserControl
+    public partial class frmChangePassword : Form
     {
-        public ctrlUserCard()
+        public frmChangePassword()
         {
             InitializeComponent();
         }
 
-       
+        private void frmChangePassword_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

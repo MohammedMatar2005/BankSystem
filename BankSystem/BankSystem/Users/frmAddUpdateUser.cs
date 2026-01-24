@@ -8,15 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BankSystem.Users.Controls
+namespace BankSystem.Users
 {
-    public partial class ctrlUserCard : UserControl
+    public partial class frmAddUpdateUser : Form
     {
-        public ctrlUserCard()
+        public frmAddUpdateUser()
         {
             InitializeComponent();
         }
-
-       
     }
 }

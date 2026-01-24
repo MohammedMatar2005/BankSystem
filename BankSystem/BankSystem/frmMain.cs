@@ -68,15 +68,7 @@ namespace BankSystem
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void btnLogout_MouseEnter(object sender, EventArgs e)
-        {
-            btnLogout.FillColor = Color.Red;
-        }
-
-        private void btnLogout_MouseLeave(object sender, EventArgs e)
-        {
-            btnLogout.FillColor = Color.Gray;
-        }
+      
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -85,7 +77,20 @@ namespace BankSystem
             this.Close();
         }
 
-      
+        private void LogoutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?",
+                                          "Confirm Exit",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Question);
+
+            // التحقق من إجابة المستخدم
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+                _frmLogin.ShowDialog();
+            }
+        }
     }
 
       

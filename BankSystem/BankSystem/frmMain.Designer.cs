@@ -32,6 +32,9 @@ namespace BankSystem
         {
             this.components = new System.ComponentModel.Container();
             this.msMainMenu = new System.Windows.Forms.MenuStrip();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.pictureBoxBackground = new System.Windows.Forms.PictureBox();
             this.menuApplications = new System.Windows.Forms.ToolStripMenuItem();
             this.subMenuDeposit = new System.Windows.Forms.ToolStripMenuItem();
             this.openNewAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,16 +47,14 @@ namespace BankSystem
             this.renewCreditCardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loanFinancingApplicationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PeopleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuClients = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCurrency = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxBackground = new System.Windows.Forms.PictureBox();
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.currentUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LogoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackground)).BeginInit();
             this.SuspendLayout();
@@ -65,14 +66,41 @@ namespace BankSystem
             this.msMainMenu.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuApplications,
+            this.PeopleToolStripMenuItem1,
             this.menuUsers,
             this.menuClients,
             this.menuCurrency,
-            this.menuSettings});
+            this.menuSettings,
+            this.LogoutToolStripMenuItem1});
             this.msMainMenu.Location = new System.Drawing.Point(0, 0);
             this.msMainMenu.Name = "msMainMenu";
             this.msMainMenu.Size = new System.Drawing.Size(282, 749);
             this.msMainMenu.TabIndex = 1;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(3, 2);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = null;
+            // 
+            // pictureBoxBackground
+            // 
+            this.pictureBoxBackground.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.pictureBoxBackground.Location = new System.Drawing.Point(285, 0);
+            this.pictureBoxBackground.Name = "pictureBoxBackground";
+            this.pictureBoxBackground.Size = new System.Drawing.Size(1375, 788);
+            this.pictureBoxBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxBackground.TabIndex = 0;
+            this.pictureBoxBackground.TabStop = false;
             // 
             // menuApplications
             // 
@@ -100,7 +128,7 @@ namespace BankSystem
             this.subMenuDeposit.Image = global::BankSystem.Properties.Resources.deposit;
             this.subMenuDeposit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.subMenuDeposit.Name = "subMenuDeposit";
-            this.subMenuDeposit.Size = new System.Drawing.Size(393, 38);
+            this.subMenuDeposit.Size = new System.Drawing.Size(387, 38);
             this.subMenuDeposit.Text = "Account Applications";
             this.subMenuDeposit.Click += new System.EventHandler(this.menuDeposit_Click);
             // 
@@ -156,7 +184,7 @@ namespace BankSystem
             this.subMenuWithdraw.Image = global::BankSystem.Properties.Resources.withdrawal;
             this.subMenuWithdraw.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.subMenuWithdraw.Name = "subMenuWithdraw";
-            this.subMenuWithdraw.Size = new System.Drawing.Size(393, 38);
+            this.subMenuWithdraw.Size = new System.Drawing.Size(387, 38);
             this.subMenuWithdraw.Text = "Card Applications";
             this.subMenuWithdraw.Click += new System.EventHandler(this.menuWithdraw_Click);
             // 
@@ -188,6 +216,17 @@ namespace BankSystem
             this.loanFinancingApplicationsToolStripMenuItem.Name = "loanFinancingApplicationsToolStripMenuItem";
             this.loanFinancingApplicationsToolStripMenuItem.Size = new System.Drawing.Size(387, 38);
             this.loanFinancingApplicationsToolStripMenuItem.Text = "Loan, Financing Applications";
+            // 
+            // PeopleToolStripMenuItem1
+            // 
+            this.PeopleToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PeopleToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.PeopleToolStripMenuItem1.Image = global::BankSystem.Properties.Resources.human_resources;
+            this.PeopleToolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PeopleToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.PeopleToolStripMenuItem1.Name = "PeopleToolStripMenuItem1";
+            this.PeopleToolStripMenuItem1.Size = new System.Drawing.Size(269, 76);
+            this.PeopleToolStripMenuItem1.Text = "People";
             // 
             // menuUsers
             // 
@@ -240,48 +279,6 @@ namespace BankSystem
             this.menuSettings.Text = "Settings";
             this.menuSettings.Click += new System.EventHandler(this.menuSettings_Click);
             // 
-            // pictureBoxBackground
-            // 
-            this.pictureBoxBackground.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.pictureBoxBackground.Location = new System.Drawing.Point(285, 0);
-            this.pictureBoxBackground.Name = "pictureBoxBackground";
-            this.pictureBoxBackground.Size = new System.Drawing.Size(1375, 788);
-            this.pictureBoxBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxBackground.TabIndex = 0;
-            this.pictureBoxBackground.TabStop = false;
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(3, 2);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = null;
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.BorderRadius = 15;
-            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogout.FillColor = System.Drawing.Color.Gray;
-            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Location = new System.Drawing.Point(3, 361);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.PressedColor = System.Drawing.Color.Blue;
-            this.btnLogout.Size = new System.Drawing.Size(279, 45);
-            this.btnLogout.TabIndex = 5;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            this.btnLogout.MouseEnter += new System.EventHandler(this.btnLogout_MouseEnter);
-            this.btnLogout.MouseLeave += new System.EventHandler(this.btnLogout_MouseLeave);
-            // 
             // currentUserInfoToolStripMenuItem
             // 
             this.currentUserInfoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.MenuHighlight;
@@ -296,11 +293,22 @@ namespace BankSystem
             this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(258, 34);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             // 
+            // LogoutToolStripMenuItem1
+            // 
+            this.LogoutToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoutToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.LogoutToolStripMenuItem1.Image = global::BankSystem.Properties.Resources.sign_out;
+            this.LogoutToolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LogoutToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.LogoutToolStripMenuItem1.Name = "LogoutToolStripMenuItem1";
+            this.LogoutToolStripMenuItem1.Size = new System.Drawing.Size(269, 68);
+            this.LogoutToolStripMenuItem1.Text = "Logout";
+            this.LogoutToolStripMenuItem1.Click += new System.EventHandler(this.LogoutToolStripMenuItem1_Click);
+            // 
             // frmMain
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1280, 749);
-            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.pictureBoxBackground);
             this.Controls.Add(this.msMainMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -329,7 +337,6 @@ namespace BankSystem
         private System.Windows.Forms.PictureBox pictureBoxBackground;
        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
        private Guna.UI2.WinForms.Guna2HtmlLabel lblTitle;
-       private Guna.UI2.WinForms.Guna2Button btnLogout;
         private ToolStripMenuItem openNewAccountToolStripMenuItem;
         private ToolStripMenuItem closeAccountToolStripMenuItem;
         private ToolStripMenuItem accountTypeConversionToolStripMenuItem;
@@ -341,6 +348,8 @@ namespace BankSystem
         private ToolStripMenuItem شرهىلسؤؤخعىفToolStripMenuItem;
         private ToolStripMenuItem currentUserInfoToolStripMenuItem;
         private ToolStripMenuItem changePasswordToolStripMenuItem;
+        private ToolStripMenuItem PeopleToolStripMenuItem1;
+        private ToolStripMenuItem LogoutToolStripMenuItem1;
     }
 }
     

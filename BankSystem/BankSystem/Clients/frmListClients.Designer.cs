@@ -40,6 +40,8 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.pnlFilter = new System.Windows.Forms.Panel();
             this.pbUserImage = new System.Windows.Forms.PictureBox();
+            this.lblRecordsCount = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClients)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.pnlFilter.SuspendLayout();
@@ -66,7 +68,7 @@
             "All",
             "Yes",
             "No"});
-            this.cbIsActive.Location = new System.Drawing.Point(260, 22);
+            this.cbIsActive.Location = new System.Drawing.Point(296, 23);
             this.cbIsActive.Name = "cbIsActive";
             this.cbIsActive.Size = new System.Drawing.Size(100, 21);
             this.cbIsActive.TabIndex = 3;
@@ -82,7 +84,7 @@
             "UserName",
             "Full Name",
             "Is Active"});
-            this.cbFilterBy.Location = new System.Drawing.Point(90, 22);
+            this.cbFilterBy.Location = new System.Drawing.Point(126, 23);
             this.cbFilterBy.Name = "cbFilterBy";
             this.cbFilterBy.Size = new System.Drawing.Size(160, 25);
             this.cbFilterBy.TabIndex = 1;
@@ -95,6 +97,7 @@
             this.label3.Size = new System.Drawing.Size(100, 23);
             this.label3.TabIndex = 0;
             this.label3.Text = "Filter By:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTitle
             // 
@@ -110,7 +113,7 @@
             // txtFilterValue
             // 
             this.txtFilterValue.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtFilterValue.Location = new System.Drawing.Point(260, 22);
+            this.txtFilterValue.Location = new System.Drawing.Point(296, 23);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.Size = new System.Drawing.Size(200, 25);
             this.txtFilterValue.TabIndex = 2;
@@ -151,6 +154,8 @@
             // pnlFilter
             // 
             this.pnlFilter.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pnlFilter.Controls.Add(this.lblRecordsCount);
+            this.pnlFilter.Controls.Add(this.label1);
             this.pnlFilter.Controls.Add(this.label3);
             this.pnlFilter.Controls.Add(this.cbFilterBy);
             this.pnlFilter.Controls.Add(this.txtFilterValue);
@@ -171,6 +176,27 @@
             this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbUserImage.TabIndex = 1;
             this.pbUserImage.TabStop = false;
+            // 
+            // lblRecordsCount
+            // 
+            this.lblRecordsCount.AutoSize = true;
+            this.lblRecordsCount.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.lblRecordsCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.lblRecordsCount.Location = new System.Drawing.Point(624, 26);
+            this.lblRecordsCount.Name = "lblRecordsCount";
+            this.lblRecordsCount.Size = new System.Drawing.Size(17, 19);
+            this.lblRecordsCount.TabIndex = 127;
+            this.lblRecordsCount.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(511, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 19);
+            this.label1.TabIndex = 126;
+            this.label1.Text = "Records Count:";
             // 
             // frmListClients
             // 
@@ -206,5 +232,7 @@
         private System.Windows.Forms.PictureBox pbUserImage;
         private System.Windows.Forms.TextBox txtFilterValue;
         private System.Windows.Forms.DataGridView dgvClients;
+        private System.Windows.Forms.Label lblRecordsCount;
+        private System.Windows.Forms.Label label1;
     }
 }

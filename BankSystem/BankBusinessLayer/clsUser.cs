@@ -14,6 +14,7 @@ namespace Bank_Business
         public string Password { set; get; }
         public int RoleID { set; get; }
         public bool isActive { set; get; }
+        public clsPerson person { set; get; }
 
         public clsPersonData PersonInfo;
 
@@ -25,6 +26,8 @@ namespace Bank_Business
             this.isActive = false;
             this.RoleID = -1;
             Mode = enMode.AddNew;
+            person = new clsPerson();
+            
         }
 
         private clsUser(int UserID, int PersonID, string Username, string Password, int RoleID, bool isActive)
@@ -36,6 +39,7 @@ namespace Bank_Business
             this.isActive = isActive;
             this.RoleID = RoleID;
             Mode = enMode.Update;
+            person = clsPerson.Find(PersonID);
         }
 
 
@@ -47,6 +51,11 @@ namespace Bank_Business
         public static DataTable GetAllUsers()
         {
             return clsUserData.GetAllUsers();
+        }
+
+        public static DataTable GetAllUsers_View()
+        {
+            return clsUserData.GetAllUsers_View();
         }
 
         private bool _AddNewUser()

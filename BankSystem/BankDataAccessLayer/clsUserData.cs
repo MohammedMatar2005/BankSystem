@@ -35,6 +35,31 @@ public class clsUserData
         return dt;
     }
 
+
+    public static DataTable GetAllUsers_View()
+    {
+        DataTable dt = new DataTable();
+        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
+        {
+            const string query = "SELECT * FROM User_Data";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows) dt.Load(reader);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error fetching all Userss", ex);
+                }
+            }
+        }
+        return dt;
+    }
     public static bool GetUserInfoByUserID(int UserID, ref int PersonID, ref string UserName, ref string Password, ref int RoleID, ref bool IsActive)
     {
         bool isFound = false;
