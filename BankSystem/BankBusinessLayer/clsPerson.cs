@@ -23,7 +23,7 @@ namespace Bank_Business
         }
         public string NationalNo { set; get; }
         public DateTime DateOfBirth { set; get; }
-        public short Gendor { set; get; }
+        public short Gender { set; get; }
         public string Address { set; get; }
         public string Phone { set; get; }
         public string Email { set; get; }
@@ -70,7 +70,7 @@ namespace Bank_Business
             this.LastName = LastName;
             this.NationalNo = NationalNo;
             this.DateOfBirth = DateOfBirth;
-            this.Gendor = Gendor;
+            this.Gender = Gendor;
             this.Address = Address;
             this.Phone = Phone;
             this.Email = Email;
@@ -87,7 +87,7 @@ namespace Bank_Business
             this.PersonID = clsPersonData.AddNewPerson(
                 this.FirstName, this.SecondName, this.ThirdName,
                 this.LastName, this.NationalNo,
-                this.DateOfBirth, this.Gendor, this.Address, this.Phone, this.Email,
+                this.DateOfBirth, this.Gender, this.Address, this.Phone, this.Email,
                 this.NationalityCountryID, this.ImagePath);
 
             return (this.PersonID != -1);
@@ -99,7 +99,7 @@ namespace Bank_Business
 
             return clsPersonData.UpdatePerson(
                 this.PersonID, this.FirstName, this.SecondName, this.ThirdName,
-                this.LastName, this.NationalNo, this.DateOfBirth, this.Gendor,
+                this.LastName, this.NationalNo, this.DateOfBirth, this.Gender,
                 this.Address, this.Phone, this.Email,
                   this.NationalityCountryID, this.ImagePath);
         }

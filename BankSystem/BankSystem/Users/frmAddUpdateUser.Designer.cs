@@ -31,7 +31,7 @@
             this.tcUser = new System.Windows.Forms.TabControl();
             this.tpPersonalInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
-            this.ctrlUserCard1 = new BankSystem.Users.Controls.ctrlUserCard();
+            this.ctrlUserCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
             this.tpLoginInfo = new System.Windows.Forms.TabPage();
             this.lblUserID = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -262,7 +262,7 @@
         private System.Windows.Forms.TabPage tpPersonalInfo;
         private System.Windows.Forms.TabPage tpLoginInfo;
         private System.Windows.Forms.Label lblTitle;
-        private Controls.ctrlUserCard ctrlUserCard1;
+        private Controls.ctrlPersonCard ctrlUserCard1;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;

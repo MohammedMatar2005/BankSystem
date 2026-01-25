@@ -86,5 +86,10 @@ namespace BankSystem
         {
 
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            txtUsername.Focus();
+        }
     }
 }

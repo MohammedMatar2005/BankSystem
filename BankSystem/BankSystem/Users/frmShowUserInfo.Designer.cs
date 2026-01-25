@@ -31,7 +31,6 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlUserCard1 = new BankSystem.Users.Controls.ctrlUserCard();
             this.gbLoginDetails = new System.Windows.Forms.GroupBox();
             this.lblIsActive = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,14 +73,6 @@
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
-            // 
-            // ctrlUserCard1
-            // 
-            this.ctrlUserCard1.BackColor = System.Drawing.Color.Transparent;
-            this.ctrlUserCard1.Location = new System.Drawing.Point(40, 100);
-            this.ctrlUserCard1.Name = "ctrlUserCard1";
-            this.ctrlUserCard1.Size = new System.Drawing.Size(780, 250);
-            this.ctrlUserCard1.TabIndex = 0;
             // 
             // gbLoginDetails
             // 
@@ -145,7 +136,6 @@
             this.Controls.Add(this.gbLoginDetails);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pnlHeader);
-            this.Controls.Add(this.ctrlUserCard1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmShowUserInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -160,7 +150,7 @@
 
         #endregion
 
-        private Controls.ctrlUserCard ctrlUserCard1;
+       
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnClose;

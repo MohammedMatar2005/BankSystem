@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlUserCard1 = new BankSystem.Users.Controls.ctrlUserCard();
+            this.ctrlUserCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
@@ -166,7 +166,7 @@
 
         #endregion
 
-        private Controls.ctrlUserCard ctrlUserCard1;
+        private Controls.ctrlPersonCard ctrlUserCard1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCurrentPassword;
         private System.Windows.Forms.TextBox txtNewPassword;

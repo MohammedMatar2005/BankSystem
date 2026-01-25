@@ -26,8 +26,14 @@ namespace BankSystem.People
 
             dgvPeople.DataSource = _dtPeople;
 
-            lblRecordsCount.Text = dgvPeople.Rows.Count.ToString();
+            lblRecordCount.Text = dgvPeople.Rows.Count.ToString();
 
+        }
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmShowPersonInfo();
+            frm.ShowDialog();
         }
     }
 }

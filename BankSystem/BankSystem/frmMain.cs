@@ -1,4 +1,5 @@
 ﻿using BankSystem.Clients;
+using BankSystem.People;
 using DVLD;
 using System;
 using System.Collections.Generic;
@@ -90,6 +91,14 @@ namespace BankSystem
                 this.Close();
                 _frmLogin.ShowDialog();
             }
+
+
+        }
+
+        private void PeopleToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmListPeople();
+            frm.ShowDialog();
         }
     }
 

@@ -41,7 +41,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.AcceptButton = this.btnLogin;
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -172,6 +171,7 @@
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.ClientSize = new System.Drawing.Size(882, 498);
             this.Controls.Add(this.btnLoginWithCode);
             this.Controls.Add(this.btnClose);
@@ -181,6 +181,7 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
