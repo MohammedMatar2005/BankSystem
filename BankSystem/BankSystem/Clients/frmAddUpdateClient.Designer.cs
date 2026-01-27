@@ -133,7 +133,7 @@
             // frmAddUpdateClient
             // 
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(840, 540);
+            this.ClientSize = new System.Drawing.Size(840, 521);
             this.Controls.Add(this.ctrlUserCard1);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.gbSearch);
