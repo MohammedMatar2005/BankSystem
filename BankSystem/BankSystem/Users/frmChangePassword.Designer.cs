@@ -45,6 +45,8 @@
             this.ctrlUserCard1.BackColor = System.Drawing.Color.Transparent;
             this.ctrlUserCard1.Location = new System.Drawing.Point(12, 12);
             this.ctrlUserCard1.Name = "ctrlUserCard1";
+            this.ctrlUserCard1.Person = null;
+            this.ctrlUserCard1.PersonID = 0;
             this.ctrlUserCard1.Size = new System.Drawing.Size(780, 220);
             this.ctrlUserCard1.TabIndex = 0;
             // 

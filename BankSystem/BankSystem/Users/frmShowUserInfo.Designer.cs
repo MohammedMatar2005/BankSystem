@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblUserName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.ctrlPersonCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
             this.pnlHeader.SuspendLayout();
             this.gbLoginDetails.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +68,7 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.btnClose.Location = new System.Drawing.Point(720, 480);
+            this.btnClose.Location = new System.Drawing.Point(700, 483);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(120, 40);
             this.btnClose.TabIndex = 2;
@@ -127,12 +128,23 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Username:";
             // 
+            // ctrlPersonCard1
+            // 
+            this.ctrlPersonCard1.BackColor = System.Drawing.Color.Transparent;
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(40, 103);
+            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.Person = null;
+            this.ctrlPersonCard1.PersonID = 0;
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(780, 240);
+            this.ctrlPersonCard1.TabIndex = 4;
+            // 
             // frmShowUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(860, 535);
+            this.Controls.Add(this.ctrlPersonCard1);
             this.Controls.Add(this.gbLoginDetails);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pnlHeader);
@@ -159,5 +171,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Label label1;
+        private Controls.ctrlPersonCard ctrlPersonCard1;
     }
 }

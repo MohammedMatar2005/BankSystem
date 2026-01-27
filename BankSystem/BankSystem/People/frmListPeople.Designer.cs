@@ -29,19 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.cbIsActive = new System.Windows.Forms.ComboBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.dgvPeople = new System.Windows.Forms.DataGridView();
-            this.pbPeopleImage = new System.Windows.Forms.PictureBox();
-            this.btnAddPerson = new System.Windows.Forms.Button();
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.lblRecordCount = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.cmsPeople = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -51,26 +45,17 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.sendEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.callPhoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAddPerson = new System.Windows.Forms.Button();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblRecordCount = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pbPeopleImage = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPeopleImage)).BeginInit();
-            this.pnlHeader.SuspendLayout();
             this.cmsPeople.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPeopleImage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cbIsActive
-            // 
-            this.cbIsActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbIsActive.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cbIsActive.FormattingEnabled = true;
-            this.cbIsActive.Items.AddRange(new object[] {
-            "All",
-            "Yes",
-            "No"});
-            this.cbIsActive.Location = new System.Drawing.Point(320, 245);
-            this.cbIsActive.Name = "cbIsActive";
-            this.cbIsActive.Size = new System.Drawing.Size(100, 25);
-            this.cbIsActive.TabIndex = 122;
-            this.cbIsActive.Visible = false;
             // 
             // cbFilterBy
             // 
@@ -80,8 +65,13 @@
             this.cbFilterBy.Items.AddRange(new object[] {
             "None",
             "Person ID",
-            "National No",
-            "Full Name",
+            "National No.",
+            "First Name",
+            "Second Name",
+            "Third Name",
+            "Last Name",
+            "Nationality",
+            "Gendor",
             "Phone",
             "Email"});
             this.cbFilterBy.Location = new System.Drawing.Point(100, 245);
@@ -125,23 +115,23 @@
             this.dgvPeople.AllowUserToDeleteRows = false;
             this.dgvPeople.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvPeople.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvPeople.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvPeople.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPeople.ColumnHeadersHeight = 35;
             this.dgvPeople.ContextMenuStrip = this.cmsPeople;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPeople.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPeople.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPeople.EnableHeadersVisualStyles = false;
             this.dgvPeople.GridColor = System.Drawing.Color.LightGray;
             this.dgvPeople.Location = new System.Drawing.Point(12, 285);
@@ -153,15 +143,68 @@
             this.dgvPeople.Size = new System.Drawing.Size(910, 340);
             this.dgvPeople.TabIndex = 116;
             // 
-            // pbPeopleImage
+            // cmsPeople
             // 
-            this.pbPeopleImage.Image = global::BankSystem.Properties.Resources.human_resources;
-            this.pbPeopleImage.Location = new System.Drawing.Point(392, 81);
-            this.pbPeopleImage.Name = "pbPeopleImage";
-            this.pbPeopleImage.Size = new System.Drawing.Size(130, 130);
-            this.pbPeopleImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPeopleImage.TabIndex = 118;
-            this.pbPeopleImage.TabStop = false;
+            this.cmsPeople.BackColor = System.Drawing.Color.White;
+            this.cmsPeople.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmsPeople.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDetailsToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.addNewPersonToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.sendEmailToolStripMenuItem,
+            this.callPhoneToolStripMenuItem});
+            this.cmsPeople.Name = "cmsPeople";
+            this.cmsPeople.Size = new System.Drawing.Size(180, 160);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
+            this.showDetailsToolStripMenuItem.Text = "Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(176, 6);
+            // 
+            // addNewPersonToolStripMenuItem
+            // 
+            this.addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
+            this.addNewPersonToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
+            this.addNewPersonToolStripMenuItem.Text = "Add New Person";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(176, 6);
+            // 
+            // sendEmailToolStripMenuItem
+            // 
+            this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
+            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
+            this.sendEmailToolStripMenuItem.Text = "Send Email";
+            // 
+            // callPhoneToolStripMenuItem
+            // 
+            this.callPhoneToolStripMenuItem.Name = "callPhoneToolStripMenuItem";
+            this.callPhoneToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
+            this.callPhoneToolStripMenuItem.Text = "Call Phone";
             // 
             // btnAddPerson
             // 
@@ -169,10 +212,12 @@
             this.btnAddPerson.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAddPerson.FlatAppearance.BorderSize = 0;
             this.btnAddPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPerson.Image = global::BankSystem.Properties.Resources.add;
             this.btnAddPerson.Location = new System.Drawing.Point(850, 220);
             this.btnAddPerson.Name = "btnAddPerson";
             this.btnAddPerson.Size = new System.Drawing.Size(60, 60);
             this.btnAddPerson.TabIndex = 123;
+            this.toolTip1.SetToolTip(this.btnAddPerson, "Add New Person");
             this.btnAddPerson.UseVisualStyleBackColor = false;
             // 
             // pnlHeader
@@ -206,68 +251,15 @@
             this.label4.TabIndex = 127;
             this.label4.Text = "Records Count:";
             // 
-            // cmsPeople
+            // pbPeopleImage
             // 
-            this.cmsPeople.BackColor = System.Drawing.Color.White;
-            this.cmsPeople.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmsPeople.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showDetailsToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.addNewPersonToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.sendEmailToolStripMenuItem,
-            this.callPhoneToolStripMenuItem});
-            this.cmsPeople.Name = "cmsPeople";
-            this.cmsPeople.Size = new System.Drawing.Size(181, 182);
-            // 
-            // showDetailsToolStripMenuItem
-            // 
-            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.showDetailsToolStripMenuItem.Text = "Show Details";
-            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // addNewPersonToolStripMenuItem
-            // 
-            this.addNewPersonToolStripMenuItem.Name = "addNewPersonToolStripMenuItem";
-            this.addNewPersonToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.addNewPersonToolStripMenuItem.Text = "Add New Person";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // sendEmailToolStripMenuItem
-            // 
-            this.sendEmailToolStripMenuItem.Name = "sendEmailToolStripMenuItem";
-            this.sendEmailToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.sendEmailToolStripMenuItem.Text = "Send Email";
-            // 
-            // callPhoneToolStripMenuItem
-            // 
-            this.callPhoneToolStripMenuItem.Name = "callPhoneToolStripMenuItem";
-            this.callPhoneToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.callPhoneToolStripMenuItem.Text = "Call Phone";
+            this.pbPeopleImage.Image = global::BankSystem.Properties.Resources.human_resources;
+            this.pbPeopleImage.Location = new System.Drawing.Point(392, 81);
+            this.pbPeopleImage.Name = "pbPeopleImage";
+            this.pbPeopleImage.Size = new System.Drawing.Size(130, 130);
+            this.pbPeopleImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPeopleImage.TabIndex = 118;
+            this.pbPeopleImage.TabStop = false;
             // 
             // frmListPeople
             // 
@@ -279,7 +271,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.btnAddPerson);
-            this.Controls.Add(this.cbIsActive);
             this.Controls.Add(this.cbFilterBy);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pbPeopleImage);
@@ -290,10 +281,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "People Management";
             ((System.ComponentModel.ISupportInitialize)(this.dgvPeople)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPeopleImage)).EndInit();
+            this.cmsPeople.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
-            this.cmsPeople.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPeopleImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,7 +294,6 @@
 
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Button btnAddPerson;
-        private System.Windows.Forms.ComboBox cbIsActive;
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTitle;
@@ -323,6 +313,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem sendEmailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem callPhoneToolStripMenuItem;
-
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

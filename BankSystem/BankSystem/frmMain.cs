@@ -85,7 +85,7 @@ namespace BankSystem
                                           MessageBoxButtons.YesNo,
                                           MessageBoxIcon.Question);
 
-            // التحقق من إجابة المستخدم
+          
             if (result == DialogResult.Yes)
             {
                 this.Close();

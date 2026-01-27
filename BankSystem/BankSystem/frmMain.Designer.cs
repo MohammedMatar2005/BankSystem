@@ -61,7 +61,7 @@ namespace BankSystem
             // 
             // msMainMenu
             // 
-            this.msMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.msMainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.msMainMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.msMainMenu.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -84,7 +84,7 @@ namespace BankSystem
             this.subMenuWithdraw,
             this.loanFinancingApplicationsToolStripMenuItem});
             this.menuApplications.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuApplications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.menuApplications.ForeColor = System.Drawing.Color.White;
             this.menuApplications.Image = global::BankSystem.Properties.Resources.transaction__1_;
             this.menuApplications.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.menuApplications.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -195,7 +195,7 @@ namespace BankSystem
             // PeopleToolStripMenuItem1
             // 
             this.PeopleToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PeopleToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.PeopleToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.PeopleToolStripMenuItem1.Image = global::BankSystem.Properties.Resources.human_resources;
             this.PeopleToolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.PeopleToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -207,7 +207,7 @@ namespace BankSystem
             // menuUsers
             // 
             this.menuUsers.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.menuUsers.ForeColor = System.Drawing.Color.White;
             this.menuUsers.Image = global::BankSystem.Properties.Resources.user;
             this.menuUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.menuUsers.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -219,7 +219,7 @@ namespace BankSystem
             // menuClients
             // 
             this.menuClients.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuClients.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.menuClients.ForeColor = System.Drawing.Color.White;
             this.menuClients.Image = global::BankSystem.Properties.Resources.clients;
             this.menuClients.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.menuClients.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -231,7 +231,7 @@ namespace BankSystem
             // menuCurrency
             // 
             this.menuCurrency.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuCurrency.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.menuCurrency.ForeColor = System.Drawing.Color.White;
             this.menuCurrency.Image = global::BankSystem.Properties.Resources.currency_conversion;
             this.menuCurrency.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.menuCurrency.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -246,7 +246,7 @@ namespace BankSystem
             this.currentUserInfoToolStripMenuItem,
             this.changePasswordToolStripMenuItem});
             this.menuSettings.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.menuSettings.ForeColor = System.Drawing.Color.White;
             this.menuSettings.Image = global::BankSystem.Properties.Resources.settings;
             this.menuSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.menuSettings.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -272,7 +272,7 @@ namespace BankSystem
             // LogoutToolStripMenuItem1
             // 
             this.LogoutToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogoutToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.LogoutToolStripMenuItem1.ForeColor = System.Drawing.Color.White;
             this.LogoutToolStripMenuItem1.Image = global::BankSystem.Properties.Resources.sign_out;
             this.LogoutToolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LogoutToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -298,7 +298,7 @@ namespace BankSystem
             // pictureBoxBackground
             // 
             this.pictureBoxBackground.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.pictureBoxBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.pictureBoxBackground.Location = new System.Drawing.Point(285, 0);
             this.pictureBoxBackground.Name = "pictureBoxBackground";
             this.pictureBoxBackground.Size = new System.Drawing.Size(1375, 788);
@@ -308,7 +308,7 @@ namespace BankSystem
             // 
             // frmMain
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(1280, 749);
             this.Controls.Add(this.pictureBoxBackground);
             this.Controls.Add(this.msMainMenu);

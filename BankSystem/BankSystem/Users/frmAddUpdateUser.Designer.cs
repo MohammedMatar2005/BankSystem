@@ -31,7 +31,6 @@
             this.tcUser = new System.Windows.Forms.TabControl();
             this.tpPersonalInfo = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
-            this.ctrlUserCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
             this.tpLoginInfo = new System.Windows.Forms.TabPage();
             this.lblUserID = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.ctrlPersonCardWithFilter1 = new BankSystem.People.Controls.ctrlPersonCardWithFilter();
             this.tcUser.SuspendLayout();
             this.tpPersonalInfo.SuspendLayout();
             this.tpLoginInfo.SuspendLayout();
@@ -58,43 +58,35 @@
             this.tcUser.Location = new System.Drawing.Point(12, 80);
             this.tcUser.Name = "tcUser";
             this.tcUser.SelectedIndex = 0;
-            this.tcUser.Size = new System.Drawing.Size(810, 380);
+            this.tcUser.Size = new System.Drawing.Size(791, 360);
             this.tcUser.TabIndex = 0;
             // 
             // tpPersonalInfo
             // 
-            this.tpPersonalInfo.Controls.Add(this.btnNext);
-            this.tpPersonalInfo.Controls.Add(this.ctrlUserCard1);
+            this.tpPersonalInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.tpPersonalInfo.Controls.Add(this.ctrlPersonCardWithFilter1);
             this.tpPersonalInfo.Location = new System.Drawing.Point(4, 26);
             this.tpPersonalInfo.Name = "tpPersonalInfo";
             this.tpPersonalInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPersonalInfo.Size = new System.Drawing.Size(802, 350);
+            this.tpPersonalInfo.Size = new System.Drawing.Size(783, 330);
             this.tpPersonalInfo.TabIndex = 0;
             this.tpPersonalInfo.Text = "Personal Info";
-            this.tpPersonalInfo.UseVisualStyleBackColor = true;
             // 
             // btnNext
             // 
             this.btnNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Location = new System.Drawing.Point(670, 290);
+            this.btnNext.Location = new System.Drawing.Point(474, 470);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(110, 40);
             this.btnNext.TabIndex = 1;
             this.btnNext.Text = "Next >>";
             this.btnNext.UseVisualStyleBackColor = false;
             // 
-            // ctrlUserCard1
-            // 
-            this.ctrlUserCard1.BackColor = System.Drawing.Color.Transparent;
-            this.ctrlUserCard1.Location = new System.Drawing.Point(10, 20);
-            this.ctrlUserCard1.Name = "ctrlUserCard1";
-            this.ctrlUserCard1.Size = new System.Drawing.Size(780, 250);
-            this.ctrlUserCard1.TabIndex = 0;
-            // 
             // tpLoginInfo
             // 
+            this.tpLoginInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.tpLoginInfo.Controls.Add(this.lblUserID);
             this.tpLoginInfo.Controls.Add(this.label4);
             this.tpLoginInfo.Controls.Add(this.chkIsActive);
@@ -107,15 +99,15 @@
             this.tpLoginInfo.Location = new System.Drawing.Point(4, 26);
             this.tpLoginInfo.Name = "tpLoginInfo";
             this.tpLoginInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpLoginInfo.Size = new System.Drawing.Size(802, 350);
+            this.tpLoginInfo.Size = new System.Drawing.Size(783, 330);
             this.tpLoginInfo.TabIndex = 1;
             this.tpLoginInfo.Text = "Login Info";
-            this.tpLoginInfo.UseVisualStyleBackColor = true;
             // 
             // lblUserID
             // 
             this.lblUserID.AutoSize = true;
             this.lblUserID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblUserID.ForeColor = System.Drawing.Color.White;
             this.lblUserID.Location = new System.Drawing.Point(200, 40);
             this.lblUserID.Name = "lblUserID";
             this.lblUserID.Size = new System.Drawing.Size(43, 21);
@@ -126,6 +118,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(60, 42);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 19);
@@ -137,6 +130,7 @@
             this.chkIsActive.AutoSize = true;
             this.chkIsActive.Checked = true;
             this.chkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkIsActive.ForeColor = System.Drawing.Color.White;
             this.chkIsActive.Location = new System.Drawing.Point(200, 230);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(79, 23);
@@ -156,6 +150,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(60, 183);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 19);
@@ -174,6 +169,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(60, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 19);
@@ -191,6 +187,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(60, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 19);
@@ -233,18 +230,28 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
             // 
-            // frmShowUserDetails
+            // ctrlPersonCardWithFilter1
+            // 
+            this.ctrlPersonCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlPersonCardWithFilter1.Location = new System.Drawing.Point(0, 0);
+            this.ctrlPersonCardWithFilter1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ctrlPersonCardWithFilter1.Name = "ctrlPersonCardWithFilter1";
+            this.ctrlPersonCardWithFilter1.Size = new System.Drawing.Size(780, 328);
+            this.ctrlPersonCardWithFilter1.TabIndex = 2;
+            // 
+            // frmAddUpdateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkGray;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(835, 525);
             this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.tcUser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmShowUserDetails";
+            this.Name = "frmAddUpdateUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add/Update User";
             this.tcUser.ResumeLayout(false);
@@ -262,7 +269,6 @@
         private System.Windows.Forms.TabPage tpPersonalInfo;
         private System.Windows.Forms.TabPage tpLoginInfo;
         private System.Windows.Forms.Label lblTitle;
-        private Controls.ctrlPersonCard ctrlUserCard1;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
@@ -275,5 +281,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblUserID;
         private System.Windows.Forms.Label label4;
+        private People.Controls.ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
     }
 }
