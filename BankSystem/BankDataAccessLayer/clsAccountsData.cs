@@ -6,12 +6,6 @@ using BankDataAccessLayer;
 
 public class clsAccountsData
 {
-    // --- Properties ---
-    public int AccountID { get; set; }
-    public int ClientID { get; set; }
-    public string AccountNumber { get; set; }
-    public string Password { get; set; }
-    public decimal Balance { get; set; }
 
 
     // 1. Get All Accounts (Returns DataTable)

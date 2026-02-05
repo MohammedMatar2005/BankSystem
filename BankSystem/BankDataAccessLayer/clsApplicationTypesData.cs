@@ -7,8 +7,7 @@ using BankDataAccessLayer;
 public class clsApplicationTypesData
 {
    
-    public int ApplicationTypeID { get; set; }
-    public string Description { get; set; }
+ 
 
 
    

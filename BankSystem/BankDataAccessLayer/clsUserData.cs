@@ -15,9 +15,10 @@ public class clsUserData
         DataTable dt = new DataTable();
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
         {
-            const string query = "SELECT * FROM Users";
-            using (SqlCommand command = new SqlCommand(query, connection))
+           
+            using (SqlCommand command = new SqlCommand("SP_GetAllUsers", connection))
             {
+                command.CommandType = CommandType.StoredProcedure;
                 try
                 {
                     connection.Open();
@@ -28,7 +29,7 @@ public class clsUserData
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Error fetching all Userss", ex);
+                    EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
                 }
             }
         }
@@ -302,7 +303,38 @@ public class clsUserData
         return IsFound;
 
     }
-    
 
-    
+    public static bool GetUserInfoByLoginCode(string LoginCode, ref int UserID, ref int PersonID, ref string UserName, ref string Password, ref int RoleID, ref bool IsActive)
+    {
+        bool isFound = false;
+        const string query = "SELECT * FROM Users WHERE LoginCode = @LoginCode";
+
+        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command = new SqlCommand(query, connection))
+        {
+            command.Parameters.AddWithValue("@UserID", UserID);
+            try
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        isFound = true;
+                        UserID = (int)reader["UserID"];
+                        PersonID = (int)reader["PersonID"];
+                        UserName = (string)reader["UserName"];
+                        Password = (string)reader["Password"];
+                        RoleID = (int)reader["RoleID"];
+                        IsActive = (bool)reader["IsActive"];
+
+                    }
+                }
+            }
+            catch (Exception ex) { EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error); }
+        }
+        return isFound;
+    }
+
+
 }

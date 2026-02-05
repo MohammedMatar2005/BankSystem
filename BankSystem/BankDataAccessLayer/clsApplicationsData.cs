@@ -6,15 +6,7 @@ using BankDataAccessLayer;
 
 public class clsApplicationsData
 {
-    // --- Properties ---
-    public int ApplicationID { get; set; }
-    public int ApplicationTypeID { get; set; }
-    public int PersonID { get; set; }
-    public DateTime DateTime { get; set; }
-    public int ApplicationStatusID { get; set; }
-    public DateTime LastStatusDate { get; set; }
-    public int CreatedByUserID { get; set; }
-
+ 
 
     // 1. Get All Applications (Returns DataTable)
     public static DataTable GetAllApplications()

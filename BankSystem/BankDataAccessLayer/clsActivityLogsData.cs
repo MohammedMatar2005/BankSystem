@@ -6,14 +6,7 @@ using BankDataAccessLayer;
 
 public class clsActivityLogsData
 {
-    // --- Properties ---
-    public int LogID { get; set; }
-    public int UserID { get; set; }
-    public int ActionTypeID { get; set; }
-    public DateTime LogDate { get; set; }
-    public string Description { get; set; }
-    public string OldValue { get; set; }
-    public string NewValue { get; set; }
+
 
 
     // 1. Get All ActivityLogs (Returns DataTable)

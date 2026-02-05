@@ -6,9 +6,7 @@ using BankDataAccessLayer;
 
 public class clsRolesData
 {
-    // --- Properties ---
-    public int RoleID { get; set; }
-    public string Description { get; set; }
+   
 
 
     // 1. Get All Roles (Returns DataTable)

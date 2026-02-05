@@ -6,18 +6,7 @@ using BankDataAccessLayer;
 
 public class clsTransactionsData
 {
-    // --- Properties ---
-    public int TransactionID { get; set; }
-    public int AccountID { get; set; }
-    public int TransactionTypeID { get; set; }
-    public decimal Amount { get; set; }
-    public decimal BalanceBefore { get; set; }
-    public decimal BalanceAfter { get; set; }
-    public DateTime TransactionDate { get; set; }
-    public int RelatedAccountID { get; set; }
-    public string Description { get; set; }
-    public int UserID { get; set; }
-
+  
 
     // 1. Get All Transactions (Returns DataTable)
     public static DataTable GetAllTransactions()

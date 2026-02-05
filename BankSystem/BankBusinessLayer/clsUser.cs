@@ -1,4 +1,5 @@
 ﻿
+
 using Bank_DataAccess;
 using System.Data;
 
@@ -15,6 +16,8 @@ namespace Bank_Business
         public int RoleID { set; get; }
         public bool isActive { set; get; }
         public clsPerson person { set; get; }
+
+       
 
         public clsPersonData PersonInfo;
 
@@ -174,6 +177,18 @@ namespace Bank_Business
         public static bool Delete(int UserID)
         {
             return clsUserData.DeleteUser(UserID);
+        }
+
+        public static clsUser GetUserInfoByLoginCode(string LoginCode)
+        {
+            int UserID = 0; string UserName = ""; string Password = ""; bool isActive = false; int RoleID = 0; int PersonID = 0;
+
+            bool IsFound = clsUserData.GetUserInfoByLoginCode(LoginCode, ref UserID, ref PersonID, ref UserName, ref Password, ref RoleID, ref isActive);
+
+            if (IsFound)
+                return new clsUser(UserID, PersonID, UserName, Password, RoleID, isActive);
+            else
+                return new clsUser();
         }
 
     }

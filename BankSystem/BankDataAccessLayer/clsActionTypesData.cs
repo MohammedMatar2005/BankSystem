@@ -6,9 +6,8 @@ using BankDataAccessLayer;
 
 public class clsActionTypesData
 {
-    // --- Properties ---
-    public int ActionTypeID { get; set; }
-    public string Description { get; set; }
+  
+  
 
 
     // 1. Get All ActionTypes (Returns DataTable)

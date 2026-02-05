@@ -6,12 +6,7 @@ using BankDataAccessLayer;
 
 public class clsTransactionTypesData
 {
-    // --- Properties ---
-    public byte TransactionTypeID { get; set; }
-    public string TransactionName { get; set; }
-    public string Description { get; set; }
-    public int Effect { get; set; }
-    public bool IsActive { get; set; }
+  
 
 
     // 1. Get All TransactionTypes (Returns DataTable)
