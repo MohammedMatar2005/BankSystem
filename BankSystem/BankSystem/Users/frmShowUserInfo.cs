@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bank_Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,21 @@ namespace BankSystem.Users
 {
     public partial class frmShowUserInfo : Form
     {
-        public frmShowUserInfo()
+        private int _UserID;
+        public frmShowUserInfo(int UserID)
         {
             InitializeComponent();
+            _UserID = UserID;
+        }
+
+        private void frmShowUserInfo_Load(object sender, EventArgs e)
+        {
+           ctrlUserCard1.LoadUserInfo(_UserID);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

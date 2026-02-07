@@ -55,19 +55,18 @@ namespace BankSystem.Users.Controls
         {
             lblFullName.Text = _Person.FirstName + " " + _Person.SecondName + " " + _Person.ThirdName + " " + _Person.LastName;
             lblAddress.Text = _Person.Address;
-            lblBirthDate.Text = _Person.DateOfBirth.ToShortDateString();
+            lblBirthDate.Text = _Person.BirthDate.ToShortDateString();
             lblEmail.Text = _Person.Email;
-            lblNationality.Text = _Person.NationalityCountryID.ToString();
-            lblPhone.Text = _Person.Phone;
+            lblPhone.Text = _Person.PhoneNumber;
             lblPersonID.Text = _Person.PersonID.ToString();
-            lblNationalNo.Text = _Person.NationalNo;
-            lblGender.Text = _Person.Gender == 0 ? "Male" : "Female";
+            lblNationalNo.Text = _Person.NationalNumber;
+            lblGender.Text = _Person.Gender ==  Convert.ToBoolean( 1 ) ? "Male" : "Female";
             _LoadPersonImage();
         }
 
         private void _LoadPersonImage()
         {
-            if (_Person.Gender == 0)
+            if (_Person.Gender == Convert.ToBoolean(1))
                 pbPersonImage.Image = Resources.man;
             else
                 pbPersonImage.Image = Resources.person_woman;
@@ -76,8 +75,8 @@ namespace BankSystem.Users.Controls
             if (ImagePath != "")
                 if (File.Exists(ImagePath))
                     pbPersonImage.ImageLocation = ImagePath;
-                else
-                    MessageBox.Show("Could not find this image: = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+          //      else
+                    //MessageBox.Show("Could not find this image: = " + ImagePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 

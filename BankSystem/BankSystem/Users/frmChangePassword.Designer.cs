@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlUserCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
+            this.ctrlPersonCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
@@ -40,21 +40,21 @@
             this.pnlDivider = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // ctrlUserCard1
+            // ctrlPersonCard1
             // 
-            this.ctrlUserCard1.BackColor = System.Drawing.Color.Transparent;
-            this.ctrlUserCard1.Location = new System.Drawing.Point(12, 12);
-            this.ctrlUserCard1.Name = "ctrlUserCard1";
-            this.ctrlUserCard1.Person = null;
-            this.ctrlUserCard1.PersonID = 0;
-            this.ctrlUserCard1.Size = new System.Drawing.Size(780, 220);
-            this.ctrlUserCard1.TabIndex = 0;
+            this.ctrlPersonCard1.BackColor = System.Drawing.Color.Transparent;
+            this.ctrlPersonCard1.Location = new System.Drawing.Point(12, 12);
+            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.Person = null;
+            this.ctrlPersonCard1.PersonID = 0;
+            this.ctrlPersonCard1.Size = new System.Drawing.Size(780, 240);
+            this.ctrlPersonCard1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(60, 280);
+            this.label1.Location = new System.Drawing.Point(58, 293);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 19);
             this.label1.TabIndex = 2;
@@ -63,7 +63,7 @@
             // txtCurrentPassword
             // 
             this.txtCurrentPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtCurrentPassword.Location = new System.Drawing.Point(210, 276);
+            this.txtCurrentPassword.Location = new System.Drawing.Point(208, 289);
             this.txtCurrentPassword.Name = "txtCurrentPassword";
             this.txtCurrentPassword.PasswordChar = '●';
             this.txtCurrentPassword.Size = new System.Drawing.Size(220, 27);
@@ -72,7 +72,7 @@
             // txtNewPassword
             // 
             this.txtNewPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtNewPassword.Location = new System.Drawing.Point(210, 321);
+            this.txtNewPassword.Location = new System.Drawing.Point(208, 334);
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.PasswordChar = '●';
             this.txtNewPassword.Size = new System.Drawing.Size(220, 27);
@@ -82,7 +82,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(60, 325);
+            this.label2.Location = new System.Drawing.Point(58, 338);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 19);
             this.label2.TabIndex = 4;
@@ -91,7 +91,7 @@
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtConfirmPassword.Location = new System.Drawing.Point(210, 366);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(208, 379);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '●';
             this.txtConfirmPassword.Size = new System.Drawing.Size(220, 27);
@@ -101,7 +101,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(60, 370);
+            this.label3.Location = new System.Drawing.Point(58, 383);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(126, 19);
             this.label3.TabIndex = 6;
@@ -131,11 +131,12 @@
             this.btnClose.TabIndex = 9;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // pnlDivider
             // 
             this.pnlDivider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pnlDivider.Location = new System.Drawing.Point(30, 245);
+            this.pnlDivider.Location = new System.Drawing.Point(28, 258);
             this.pnlDivider.Name = "pnlDivider";
             this.pnlDivider.Size = new System.Drawing.Size(740, 2);
             this.pnlDivider.TabIndex = 1;
@@ -155,7 +156,7 @@
             this.Controls.Add(this.txtCurrentPassword);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlDivider);
-            this.Controls.Add(this.ctrlUserCard1);
+            this.Controls.Add(this.ctrlPersonCard1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -168,7 +169,7 @@
 
         #endregion
 
-        private Controls.ctrlPersonCard ctrlUserCard1;
+        private Controls.ctrlPersonCard ctrlPersonCard1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCurrentPassword;
         private System.Windows.Forms.TextBox txtNewPassword;

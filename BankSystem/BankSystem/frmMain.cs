@@ -1,5 +1,6 @@
 ﻿using BankSystem.Clients;
 using BankSystem.People;
+using BankSystem.Users;
 using DVLD;
 using System;
 using System.Collections.Generic;
@@ -88,7 +89,7 @@ namespace BankSystem
           
             if (result == DialogResult.Yes)
             {
-                this.Close();
+                this.Hide();
                 _frmLogin.ShowDialog();
             }
 
@@ -98,6 +99,18 @@ namespace BankSystem
         private void PeopleToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Form frm = new frmListPeople();
+            frm.ShowDialog();
+        }
+
+        private void currentUserInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmShowUserInfo(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
             frm.ShowDialog();
         }
     }

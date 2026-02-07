@@ -1,200 +1,120 @@
-﻿using System;
+﻿
+using System;
 using System.Data;
-using System.Xml.Linq;
-using Bank_DataAccess;
+// تأكد من عمل using لطبقة الداتا أكسس هنا إذا كانت في مشروع مختلف
+// using YourProjectNameDataAccessLayer; 
 
-
-namespace Bank_Business
+public class clsPerson
 {
-    public class clsPerson
+    public enum enMode { AddNew = 0, Update = 1 };
+    public enMode Mode = enMode.AddNew;
+
+    public int PersonID { get; set; }
+    public string FirstName { get; set; }
+    public string SecondName { get; set; }
+    public string ThirdName { get; set; }
+    public string LastName { get; set; }
+    public bool Gender { get; set; }
+    public string NationalNumber { get; set; }
+    public string Address { get; set; }
+    public string Email { get; set; }
+    public string PhoneNumber { get; set; }
+    public string ImagePath { get; set; }
+    public DateTime BirthDate { get; set; }
+
+
+    // Constructor للوضع الافتراضي (إضافة جديد)
+    public clsPerson()
     {
-        public enum enMode { AddNew = 0, Update = 1 };
-        public enMode Mode = enMode.AddNew;
+        this.PersonID = -1;
+        // يمكنك هنا تعيين قيم افتراضية لباقي الخصائص إذا أردت
+        Mode = enMode.AddNew;
+    }
 
-        public int PersonID { set; get; }
-        public string FirstName { set; get; }
-        public string SecondName { set; get; }
-        public string ThirdName { set; get; }
-        public string LastName { set; get; }
-        public string FullName
+    // Private Constructor لاستخدامه في ميثود Find (وضع التعديل)
+    private clsPerson(int PersonID, string FirstName, string SecondName, string ThirdName, string LastName, bool Gender, string NationalNumber, string Address, string Email, string PhoneNumber, string ImagePath, DateTime BirthDate)
+    {
+        this.PersonID = PersonID;
+        this.FirstName = FirstName;
+        this.SecondName = SecondName;
+        this.ThirdName = ThirdName;
+        this.LastName = LastName;
+        this.Gender = Gender;
+        this.NationalNumber = NationalNumber;
+        this.Address = Address;
+        this.Email = Email;
+        this.PhoneNumber = PhoneNumber;
+        this.ImagePath = ImagePath;
+        this.BirthDate = BirthDate;
+
+        Mode = enMode.Update;
+    }
+
+    // ميثود Find
+    public static clsPerson Find(int PersonID)
+    {
+        string FirstName = "";
+        string SecondName = "";
+        string ThirdName = "";
+        string LastName = "";
+        bool Gender = false;
+        string NationalNumber = "";
+        string Address = "";
+        string Email = "";
+        string PhoneNumber = "";
+        string ImagePath = "";
+        DateTime BirthDate = DateTime.Now;
+
+        bool isFound = clsPersonData.GetPeopleInfoByID(PersonID, ref FirstName, ref SecondName, ref ThirdName, ref LastName, ref Gender, ref NationalNumber, ref Address, ref Email, ref PhoneNumber, ref ImagePath, ref BirthDate);
+
+        if (isFound)
+            return new clsPerson(PersonID,FirstName, SecondName, ThirdName, LastName, Gender, NationalNumber, Address, Email, PhoneNumber, ImagePath, BirthDate);
+        else
+            return null;
+    }
+
+    // ميثود Save (تقوم بالإضافة أو التعديل تلقائياً)
+    public bool Save()
+    {
+        switch (Mode)
         {
-            get { return FirstName + " " + SecondName + " " + ThirdName + " " + LastName; }
+            case enMode.AddNew:
+                if (_AddNewPeople())
+                {
+                    Mode = enMode.Update;
+                    return true;
+                }
+                return false;
 
+            case enMode.Update:
+                return _UpdatePeople();
         }
-        public string NationalNo { set; get; }
-        public DateTime DateOfBirth { set; get; }
-        public short Gender { set; get; }
-        public string Address { set; get; }
-        public string Phone { set; get; }
-        public string Email { set; get; }
-        public int NationalityCountryID { set; get; }
+        return false;
+    }
 
-      //  public clsCountry CountryInfo;
+    private bool _AddNewPeople()
+    {
+        this.PersonID = clsPersonData.AddNewPeople(this.FirstName, this.SecondName, this.ThirdName, this.LastName, this.Gender, this.NationalNumber, this.Address, this.Email, this.PhoneNumber, this.ImagePath, this.BirthDate);
+        return (this.PersonID != -1);
+    }
 
-        private string _ImagePath;
+    private bool _UpdatePeople()
+    {
+        return clsPersonData.UpdatePeople(this.PersonID, this.FirstName, this.SecondName, this.ThirdName, this.LastName, this.Gender, this.NationalNumber, this.Address, this.Email, this.PhoneNumber, this.ImagePath, this.BirthDate);
+    }
 
-        public string ImagePath
-        {
-            get { return _ImagePath; }
-            set { _ImagePath = value; }
-        }
+    public static DataTable GetAllPeople()
+    {
+        return clsPersonData.GetAllPeople();
+    }
 
-        public clsPerson()
+    public static bool Delete(int PersonID)
+    {
+        return clsPersonData.DeletePeople(PersonID);
+    }
 
-        {
-            this.PersonID = -1;
-            this.FirstName = "";
-            this.SecondName = "";
-            this.ThirdName = "";
-            this.LastName = "";
-            this.DateOfBirth = DateTime.Now;
-            this.Address = "";
-            this.Phone = "";
-            this.Email = "";
-            this.NationalityCountryID = -1;
-            this.ImagePath = "";
-
-            Mode = enMode.AddNew;
-        }
-
-        private clsPerson(int PersonID, string FirstName, string SecondName, string ThirdName,
-            string LastName, string NationalNo, DateTime DateOfBirth, short Gendor,
-             string Address, string Phone, string Email,
-            int NationalityCountryID, string ImagePath)
-
-        {
-            this.PersonID = PersonID;
-            this.FirstName = FirstName;
-            this.SecondName = SecondName;
-            this.ThirdName = ThirdName;
-            this.LastName = LastName;
-            this.NationalNo = NationalNo;
-            this.DateOfBirth = DateOfBirth;
-            this.Gender = Gendor;
-            this.Address = Address;
-            this.Phone = Phone;
-            this.Email = Email;
-            this.NationalityCountryID = NationalityCountryID;
-            this.ImagePath = ImagePath;
-           // this.CountryInfo = clsCountry.Find(NationalityCountryID);
-            Mode = enMode.Update;
-        }
-
-        private bool _AddNewPerson()
-        {
-            //call DataAccess Layer 
-
-            this.PersonID = clsPersonData.AddNewPerson(
-                this.FirstName, this.SecondName, this.ThirdName,
-                this.LastName, this.NationalNo,
-                this.DateOfBirth, this.Gender, this.Address, this.Phone, this.Email,
-                this.NationalityCountryID, this.ImagePath);
-
-            return (this.PersonID != -1);
-        }
-
-        private bool _UpdatePerson()
-        {
-            //call DataAccess Layer 
-
-            return clsPersonData.UpdatePerson(
-                this.PersonID, this.FirstName, this.SecondName, this.ThirdName,
-                this.LastName, this.NationalNo, this.DateOfBirth, this.Gender,
-                this.Address, this.Phone, this.Email,
-                  this.NationalityCountryID, this.ImagePath);
-        }
-
-        public static clsPerson Find(int PersonID)
-        {
-
-            string FirstName = "", SecondName = "", ThirdName = "", LastName = "", NationalNo = "", Email = "", Phone = "", Address = "", ImagePath = "";
-            DateTime DateOfBirth = DateTime.Now;
-            int NationalityCountryID = -1;
-            byte Gendor = 0;
-
-            bool IsFound = clsPersonData.GetPersonInfoByID
-                                (
-                                    PersonID, ref FirstName, ref SecondName,
-                                    ref ThirdName, ref LastName, ref NationalNo, ref DateOfBirth,
-                                    ref Gendor, ref Address, ref Phone, ref Email,
-                                    ref NationalityCountryID, ref ImagePath
-                                );
-
-            if (IsFound)
-                //we return new object of that person with the right data
-                return new clsPerson(PersonID, FirstName, SecondName, ThirdName, LastName,
-                          NationalNo, DateOfBirth, Gendor, Address, Phone, Email, NationalityCountryID, ImagePath);
-            else
-                return null;
-        }
-
-        public static clsPerson Find(string NationalNo)
-        {
-            string FirstName = "", SecondName = "", ThirdName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
-            DateTime DateOfBirth = DateTime.Now;
-            int PersonID = -1, NationalityCountryID = -1;
-            byte Gendor = 0;
-
-            bool IsFound = clsPersonData.GetPersonInfoByNationalNo
-                                (
-                                    NationalNo, ref PersonID, ref FirstName, ref SecondName,
-                                    ref ThirdName, ref LastName, ref DateOfBirth,
-                                    ref Gendor, ref Address, ref Phone, ref Email,
-                                    ref NationalityCountryID, ref ImagePath
-                                );
-
-            if (IsFound)
-
-                return new clsPerson(PersonID, FirstName, SecondName, ThirdName, LastName,
-                          NationalNo, DateOfBirth, Gendor, Address, Phone, Email, NationalityCountryID, ImagePath);
-            else
-                return null;
-        }
-
-        public bool Save()
-        {
-            switch (Mode)
-            {
-                case enMode.AddNew:
-                    if (_AddNewPerson())
-                    {
-
-                        Mode = enMode.Update;
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-                case enMode.Update:
-
-                    return _UpdatePerson();
-
-            }
-
-            return false;
-        }
-
-        public static DataTable GetAllPeople()
-        {
-            return clsPersonData.GetAllPeople();
-        }
-
-        public static bool DeletePerson(int ID)
-        {
-            return clsPersonData.DeletePerson(ID);
-        }
-
-        public static bool isPersonExist(int ID)
-        {
-            return clsPersonData.IsPersonExist(ID);
-        }
-
-        public static bool isPersonExist(string NationlNo)
-        {
-            return clsPersonData.IsPersonExist(NationlNo);
-        }
-
+    public static bool IsExist(int PersonID)
+    {
+        return clsPersonData.IsPeopleExist(PersonID);
     }
 }

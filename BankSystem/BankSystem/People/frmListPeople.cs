@@ -20,19 +20,26 @@ namespace BankSystem.People
             InitializeComponent();
         }
 
+      
+
+        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmShowPersonInfo((int)dgvPeople.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
+
         private void frmListPeople_Load(object sender, EventArgs e)
         {
             _dtPeople = clsPerson.GetAllPeople();
 
-            dgvPeople.DataSource = _dtPeople;
+            dgvPeople.DataSource = _dtPeople;   
 
-            lblRecordCount.Text = dgvPeople.Rows.Count.ToString();
-
+            lblRecordCount.Text= dgvPeople.Rows.Count.ToString();
         }
 
-        private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addNewPersonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new frmShowPersonInfo();
+            Form frm = new frmAddUpdatePerson();
             frm.ShowDialog();
         }
     }

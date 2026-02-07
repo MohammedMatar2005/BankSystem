@@ -116,7 +116,8 @@
             // lblPersonID
             // 
             this.lblPersonID.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblPersonID.Location = new System.Drawing.Point(130, 20);
+            this.lblPersonID.ForeColor = System.Drawing.Color.Blue;
+            this.lblPersonID.Location = new System.Drawing.Point(146, 20);
             this.lblPersonID.Name = "lblPersonID";
             this.lblPersonID.Size = new System.Drawing.Size(100, 23);
             this.lblPersonID.TabIndex = 1;
@@ -261,7 +262,7 @@
             this.rbMale.Checked = true;
             this.rbMale.Location = new System.Drawing.Point(120, 142);
             this.rbMale.Name = "rbMale";
-            this.rbMale.Size = new System.Drawing.Size(104, 24);
+            this.rbMale.Size = new System.Drawing.Size(64, 24);
             this.rbMale.TabIndex = 13;
             this.rbMale.TabStop = true;
             this.rbMale.Text = "Male";
@@ -270,7 +271,7 @@
             // 
             this.rbFemale.Location = new System.Drawing.Point(190, 142);
             this.rbFemale.Name = "rbFemale";
-            this.rbFemale.Size = new System.Drawing.Size(104, 24);
+            this.rbFemale.Size = new System.Drawing.Size(90, 24);
             this.rbFemale.TabIndex = 14;
             this.rbFemale.Text = "Female";
             // 
@@ -396,6 +397,7 @@
             this.MaximizeBox = false;
             this.Name = "frmAddUpdatePerson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmAddUpdatePerson_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlMainContent.ResumeLayout(false);
             this.gbDetails.ResumeLayout(false);
