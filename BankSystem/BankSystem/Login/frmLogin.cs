@@ -89,7 +89,13 @@ namespace BankSystem
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
+
+            txtPassword.Clear();
+            txtUsername.Clear();
+
             txtUsername.Focus();
+
+
         }
     }
 }

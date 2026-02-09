@@ -91,6 +91,7 @@ namespace BankSystem
             {
                 this.Hide();
                 _frmLogin.ShowDialog();
+                
             }
 
 

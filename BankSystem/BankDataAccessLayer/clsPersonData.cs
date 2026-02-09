@@ -15,13 +15,15 @@ public class clsPersonData
         DataTable dt = new DataTable();
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
         {
-            const string query = "SELECT * FROM People";
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlCommand command = new SqlCommand("SP_GetAllPeople", connection))
             {
+
+                command.CommandType = CommandType.StoredProcedure;
+
                 try
                 {
                     connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    using (SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection))
                     {
                         if (reader.HasRows) dt.Load(reader);
                     }
@@ -32,16 +34,28 @@ public class clsPersonData
         return dt;
     }
 
-    
-    public static bool GetPeopleInfoByID(int PersonID, ref string FirstName, ref string SecondName, ref string ThirdName, ref string LastName, ref bool Gender, ref string NationalNumber, ref string Address, ref string Email, ref string PhoneNumber, ref string ImagePath, ref DateTime BirthDate)
+    public static bool GetPeopleInfoByID(
+     int PersonID,
+     ref string FirstName,
+     ref string SecondName,
+     ref string ThirdName,
+     ref string LastName,
+     ref bool Gender,
+     ref string NationalNumber,
+     ref string Address,
+     ref string Email,
+     ref string PhoneNumber,
+     ref string ImagePath,
+     ref DateTime BirthDate)
     {
         bool isFound = false;
-        const string query = "SELECT * FROM People WHERE PersonID = @PersonID";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_GetPersonByID", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@PersonID", PersonID);
+
             try
             {
                 connection.Open();
@@ -50,123 +64,246 @@ public class clsPersonData
                     if (reader.Read())
                     {
                         isFound = true;
-                        FirstName = (string)reader["FirstName"];
-                        SecondName = (string)reader["SecondName"];
-                        ThirdName = (string)reader["ThirdName"];
-                        LastName = (string)reader["LastName"];
+                        FirstName = reader["FirstName"].ToString();
+                        SecondName = reader["SecondName"].ToString();
+                        ThirdName = reader["ThirdName"] == DBNull.Value ? null : reader["ThirdName"].ToString();
+                        LastName = reader["LastName"].ToString();
                         Gender = (bool)reader["Gender"];
-                        NationalNumber = (string)reader["NationalNumber"];
-                        Address = (string)reader["Address"];
-                        Email = (string)reader["Email"];
-                        PhoneNumber = (string)reader["PhoneNumber"];
-                        ImagePath = (string)reader["ImagePath"];
+                        NationalNumber = reader["NationalNumber"].ToString();
+                        Address = reader["Address"].ToString();
+                        Email = reader["Email"] == DBNull.Value ? null : reader["Email"].ToString();
+                        PhoneNumber = reader["PhoneNumber"].ToString();
+                        ImagePath = reader["ImagePath"] == DBNull.Value ? null : reader["ImagePath"].ToString();
                         BirthDate = (DateTime)reader["BirthDate"];
-
                     }
                 }
             }
-            catch (Exception ex) { isFound = false; }
+            catch (Exception ex)
+            {
+                isFound = false;
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
         }
+
         return isFound;
     }
 
+
     // 3. Is People Exist
-    public static bool IsPeopleExist(int PersonID)
+    public static bool IsPersonExist(int PersonID)
     {
-        bool isFound = false;
-        const string query = "SELECT Found=1 FROM People WHERE PersonID = @PersonID";
+        bool exists = false;
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_IsPersonExist", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@PersonID", PersonID);
+
+            SqlParameter output = new SqlParameter("@Exists", SqlDbType.Bit)
+            {
+                Direction = ParameterDirection.Output
+            };
+            command.Parameters.Add(output);
+
             try
             {
                 connection.Open();
-                object result = command.ExecuteScalar();
-                isFound = (result != null);
+                command.ExecuteNonQuery();
+                exists = (bool)output.Value;
             }
-            catch { isFound = false; }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
         }
-        return isFound;
+
+        return exists;
     }
 
     // 4. Add New People
-    public static int AddNewPeople(string FirstName, string SecondName, string ThirdName, string LastName, bool Gender, string NationalNumber, string Address, string Email, string PhoneNumber, string ImagePath, DateTime BirthDate)
+    public static int AddNewPeople(
+        string FirstName,
+        string SecondName,
+        string ThirdName,
+        string LastName,
+        bool Gender,
+        string NationalNumber,
+        string Address,
+        string Email,
+        string PhoneNumber,
+        string ImagePath,
+        DateTime BirthDate)
     {
         int newID = -1;
-        const string query = @"INSERT INTO People (FirstName, SecondName, ThirdName, LastName, Gender, NationalNumber, Address, Email, PhoneNumber, ImagePath, BirthDate) 
-                               VALUES (@FirstName, @SecondName, @ThirdName, @LastName, @Gender, @NationalNumber, @Address, @Email, @PhoneNumber, @ImagePath, @BirthDate); 
-                               SELECT SCOPE_IDENTITY();";
 
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlConnection connection =
+               new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+               new SqlCommand("SP_AddNewPerson", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
+
             command.Parameters.AddWithValue("@FirstName", FirstName);
             command.Parameters.AddWithValue("@SecondName", SecondName);
-            command.Parameters.AddWithValue("@ThirdName", ThirdName);
+
+            command.Parameters.AddWithValue("@ThirdName",
+                (object)ThirdName ?? DBNull.Value);
+
             command.Parameters.AddWithValue("@LastName", LastName);
             command.Parameters.AddWithValue("@Gender", Gender);
             command.Parameters.AddWithValue("@NationalNumber", NationalNumber);
             command.Parameters.AddWithValue("@Address", Address);
-            command.Parameters.AddWithValue("@Email", Email);
+
+            command.Parameters.AddWithValue("@Email",
+                (object)Email ?? DBNull.Value);
+
             command.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
-            command.Parameters.AddWithValue("@ImagePath", ImagePath);
+
+            command.Parameters.AddWithValue("@ImagePath",
+                (object)ImagePath ?? DBNull.Value);
+
             command.Parameters.AddWithValue("@BirthDate", BirthDate);
+
+            // Output parameter
+            SqlParameter outputId =
+                new SqlParameter("@NewPersonID", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+            command.Parameters.Add(outputId);
 
             try
             {
                 connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
-                    newID = insertedID;
+                command.ExecuteNonQuery();
+
+                if (outputId.Value != DBNull.Value)
+                    newID = (int)outputId.Value;
             }
-            catch (Exception ex) { EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error); }
+            catch (Exception ex)
+            {
+                EventLogger.Log(
+                    ex.ToString(),
+                    System.Diagnostics.EventLogEntryType.Error);
+            }
         }
+
         return newID;
     }
 
     // 5. Update People
-    public static bool UpdatePeople(int PersonID, string FirstName, string SecondName, string ThirdName, string LastName, bool Gender, string NationalNumber, string Address, string Email, string PhoneNumber, string ImagePath, DateTime BirthDate)
+    public static bool UpdatePerson(
+        int PersonID,
+        string FirstName,
+        string SecondName,
+        string ThirdName,
+        string LastName,
+        bool Gender,
+        string NationalNumber,
+        string Address,
+        string Email,
+        string PhoneNumber,
+        string ImagePath,
+        DateTime BirthDate)
     {
-        int rowsAffected = 0;
-        const string query = @"UPDATE People SET FirstName = @FirstName, SecondName = @SecondName, ThirdName = @ThirdName, LastName = @LastName, Gender = @Gender, NationalNumber = @NationalNumber, Address = @Address, Email = @Email, PhoneNumber = @PhoneNumber, ImagePath = @ImagePath, BirthDate = @BirthDate WHERE PersonID = @PersonID";
+        bool isUpdated = false;
 
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlConnection connection =
+               new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+               new SqlCommand("SP_UpdatePerson", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
+
             command.Parameters.AddWithValue("@PersonID", PersonID);
             command.Parameters.AddWithValue("@FirstName", FirstName);
             command.Parameters.AddWithValue("@SecondName", SecondName);
-            command.Parameters.AddWithValue("@ThirdName", ThirdName);
+
+            command.Parameters.AddWithValue("@ThirdName",
+                (object)ThirdName ?? DBNull.Value);
+
             command.Parameters.AddWithValue("@LastName", LastName);
             command.Parameters.AddWithValue("@Gender", Gender);
             command.Parameters.AddWithValue("@NationalNumber", NationalNumber);
             command.Parameters.AddWithValue("@Address", Address);
-            command.Parameters.AddWithValue("@Email", Email);
+
+            command.Parameters.AddWithValue("@Email",
+                (object)Email ?? DBNull.Value);
+
             command.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
-            command.Parameters.AddWithValue("@ImagePath", ImagePath);
+
+            command.Parameters.AddWithValue("@ImagePath",
+                (object)ImagePath ?? DBNull.Value);
+
             command.Parameters.AddWithValue("@BirthDate", BirthDate);
 
-            try { connection.Open(); rowsAffected = command.ExecuteNonQuery(); }
-            catch (Exception ex) { EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error); }
+            // Output parameter
+            SqlParameter rowsAffected =
+                new SqlParameter("@RowsAffected", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+            command.Parameters.Add(rowsAffected);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+                isUpdated =
+                    rowsAffected.Value != DBNull.Value &&
+                    (int)rowsAffected.Value > 0;
+            }
+            catch (Exception ex)
+            {
+                EventLogger.Log(
+                    ex.ToString(),
+                    System.Diagnostics.EventLogEntryType.Error);
+            }
         }
-        return (rowsAffected > 0);
+
+        return isUpdated;
     }
 
     // 6. Delete People
     public static bool DeletePeople(int PersonID)
     {
-        int rowsAffected = 0;
-        const string query = "DELETE FROM People WHERE PersonID = @PersonID";
+        bool isDeleted = false;
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_DeletePerson", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
+
+            // Input parameter
             command.Parameters.AddWithValue("@PersonID", PersonID);
-            try { connection.Open(); rowsAffected = command.ExecuteNonQuery(); }
-            catch (Exception ex) { EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error); }
+
+            // Output parameter
+            SqlParameter outputRowsAffected = new SqlParameter("@RowsAffected", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+            command.Parameters.Add(outputRowsAffected);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+                // Check Output Parameter
+                if (outputRowsAffected.Value != DBNull.Value)
+                    isDeleted = (int)outputRowsAffected.Value > 0;
+            }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
         }
-        return (rowsAffected > 0);
+
+        return isDeleted;
     }
+
 }

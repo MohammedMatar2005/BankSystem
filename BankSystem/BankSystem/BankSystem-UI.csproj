@@ -35,6 +35,48 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Accounts\Controls\ctrlAccountInfoCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Accounts\Controls\ctrlAccountInfoCard.Designer.cs">
+      <DependentUpon>ctrlAccountInfoCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmFindAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmFindAccount.Designer.cs">
+      <DependentUpon>frmFindAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmAddUpdateAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmAddUpdateAccount.Designer.cs">
+      <DependentUpon>frmAddUpdateAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmListAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmListAccounts.Designer.cs">
+      <DependentUpon>frmListAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Accounts\frmShowAccountInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Accounts\frmShowAccountInfo.Designer.cs">
+      <DependentUpon>frmShowAccountInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\frmAddUpdateApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\frmAddUpdateApplication.Designer.cs">
+      <DependentUpon>frmAddUpdateApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\frmShowApplicationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\frmShowApplicationInfo.Designer.cs">
+      <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clients\Controls\ctrlClientInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -382,7 +424,9 @@
   <ItemGroup>
     <None Include="Resources\sign_out.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Applications\Controls\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\person_woman.png" />
   </ItemGroup>

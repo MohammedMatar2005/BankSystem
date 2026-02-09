@@ -17,7 +17,9 @@ namespace Bank_Business
         public bool isActive { set; get; }
         public clsPerson person { set; get; }
 
-       
+        public string LoginCode { set; get; }
+
+
 
         public clsPersonData PersonInfo;
 
@@ -28,12 +30,13 @@ namespace Bank_Business
             this.Password = "";
             this.isActive = false;
             this.RoleID = -1;
+            this.LoginCode = "";
             Mode = enMode.AddNew;
             person = new clsPerson();
             
         }
 
-        private clsUser(int UserID, int PersonID, string Username, string Password, int RoleID, bool isActive)
+        private clsUser(int UserID, int PersonID, string Username, string Password, int RoleID, bool isActive,  string loginCode)
         {
             this.UserID = UserID;
             this.PersonID = PersonID;
@@ -43,6 +46,7 @@ namespace Bank_Business
             this.RoleID = RoleID;
             Mode = enMode.Update;
             person = clsPerson.Find(PersonID);
+            this.LoginCode = loginCode;
         }
 
 
@@ -70,7 +74,9 @@ namespace Bank_Business
                 this.UserName,
                 hash,
                 this.RoleID,
-                this.isActive);
+                this.isActive,
+                this.LoginCode
+                );
 
             this.Password = hash;
             return this.UserID != -1;
@@ -109,16 +115,16 @@ namespace Bank_Business
         public static clsUser FindByUserID(int UserID)
         {
 
-            int PersonID = 0; string UserName = ""; string Password = ""; bool isActive = false; int RoleID = 0;
+            int PersonID = 0; string UserName = ""; string Password = ""; bool isActive = false; int RoleID = 0; string LoginCode = "";
 
             bool IsFound = clsUserData.GetUserInfoByUserID
                                 (
-                                    UserID, ref PersonID, ref UserName, ref Password, ref RoleID, ref isActive
+                                    UserID, ref PersonID, ref UserName, ref Password, ref RoleID, ref isActive, ref LoginCode
                                 );
 
             if (IsFound)
                 //we return new object of that person with the right data
-                return new clsUser(UserID, PersonID, UserName, Password, RoleID, isActive);
+                return new clsUser(UserID, PersonID, UserName, Password, RoleID, isActive, LoginCode);
             else
                 return null;
         }
@@ -126,16 +132,16 @@ namespace Bank_Business
         public static clsUser FindByPersonID(int PersonID)
         {
 
-            int UserID = 0; string UserName = ""; string Password = ""; bool isActive = false; int RoleID = 0;
+            int UserID = 0; string UserName = ""; string Password = ""; bool isActive = false; int RoleID = 0;string LoginCode = "";
 
             bool IsFound = clsUserData.GetUsersInfoByPersonID
                                 (
-                                    PersonID, ref UserID, ref UserName, ref Password, ref RoleID, ref isActive
+                                    PersonID, ref UserID, ref UserName, ref Password, ref RoleID, ref isActive, ref LoginCode
                                 );
 
             if (IsFound)
                 //we return new object of that person with the right data
-                return new clsUser(UserID, PersonID, UserName, Password, RoleID, isActive);
+                return new clsUser(UserID, PersonID, UserName, Password, RoleID, isActive, LoginCode);
             else
                 return null;
         }
@@ -144,17 +150,17 @@ namespace Bank_Business
         public static clsUser FindByUsernameAndPassword(string UserName, string Password)
         {
             int UserID = -1, PersonID = -1;
-            bool IsActive = false; int RoleID = -1;
+            bool IsActive = false; int RoleID = -1; string LoginCode = "";
 
             string hash = clsSecurity.ComputeHash(Password);
 
             bool IsFound = clsUserData.GetUserInfoByUsernameAndPassword(
-                UserName, hash, ref UserID, ref PersonID, ref RoleID , ref IsActive);
+                UserName, hash, ref UserID, ref PersonID, ref RoleID , ref IsActive, ref LoginCode);
 
             if (!IsFound)
                 return null;
 
-            return new clsUser(UserID, PersonID, UserName, hash, RoleID, IsActive);
+            return new clsUser(UserID, PersonID, UserName, hash, RoleID, IsActive, LoginCode);
         }
 
 
@@ -170,7 +176,7 @@ namespace Bank_Business
 
         public static bool isUserExistForPersonID(int PersonID)
         {
-            return clsUserData.IsUserExistByUserID(PersonID);
+            return clsUserData.IsUserExistByPersonID(PersonID);
         }
 
 
@@ -186,9 +192,9 @@ namespace Bank_Business
             bool IsFound = clsUserData.GetUserInfoByLoginCode(LoginCode, ref UserID, ref PersonID, ref UserName, ref Password, ref RoleID, ref isActive);
 
             if (IsFound)
-                return new clsUser(UserID, PersonID, UserName, Password, RoleID, isActive);
+                return new clsUser(UserID, PersonID, UserName, Password, RoleID, isActive, LoginCode);
             else
-                return new clsUser();
+                return null;
         }
 
     }

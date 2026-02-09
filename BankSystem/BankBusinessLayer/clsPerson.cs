@@ -100,7 +100,7 @@ public class clsPerson
 
     private bool _UpdatePeople()
     {
-        return clsPersonData.UpdatePeople(this.PersonID, this.FirstName, this.SecondName, this.ThirdName, this.LastName, this.Gender, this.NationalNumber, this.Address, this.Email, this.PhoneNumber, this.ImagePath, this.BirthDate);
+        return clsPersonData.UpdatePerson(this.PersonID, this.FirstName, this.SecondName, this.ThirdName, this.LastName, this.Gender, this.NationalNumber, this.Address, this.Email, this.PhoneNumber, this.ImagePath, this.BirthDate);
     }
 
     public static DataTable GetAllPeople()
@@ -115,6 +115,6 @@ public class clsPerson
 
     public static bool IsExist(int PersonID)
     {
-        return clsPersonData.IsPeopleExist(PersonID);
+        return clsPersonData.IsPersonExist(PersonID);
     }
 }
