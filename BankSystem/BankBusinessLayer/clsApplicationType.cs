@@ -34,7 +34,7 @@ public class clsApplicationType
     {
         string Description = "";
 
-        bool isFound = clsApplicationTypesData.GetApplicationTypesInfoByApplicationTypeID(ApplicationTypeID, ref Description);
+        bool isFound = clsApplicationTypesData.GetApplicationTypeInfoByID(ApplicationTypeID, ref Description);
 
         if (isFound)
             return new clsApplicationType(ApplicationTypeID, Description);
@@ -63,13 +63,13 @@ public class clsApplicationType
 
     private bool _AddNewApplicationType()
     {
-        this.ApplicationTypeID = clsApplicationTypesData.AddNewApplicationTypes(this.Description);
+        this.ApplicationTypeID = clsApplicationTypesData.AddNewApplicationType(this.Description);
         return (this.ApplicationTypeID != -1);
     }
 
     private bool _UpdateApplicationType()
     {
-        return clsApplicationTypesData.UpdateApplicationTypes(this.ApplicationTypeID, this.Description);
+        return clsApplicationTypesData.UpdateApplicationType(this.ApplicationTypeID, this.Description);
     }
 
     public static DataTable GetAllApplicationTypes()
@@ -79,7 +79,7 @@ public class clsApplicationType
 
     public static bool Delete(int ApplicationTypeID)
     {
-        return clsApplicationTypesData.DeleteApplicationTypes(ApplicationTypeID);
+        return clsApplicationTypesData.DeleteApplicationType(ApplicationTypeID);
     }
 
     public static bool IsExist(int ApplicationTypeID)

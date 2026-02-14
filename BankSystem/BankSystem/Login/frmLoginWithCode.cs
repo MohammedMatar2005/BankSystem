@@ -1,4 +1,5 @@
 ﻿using Bank_Business;
+using DVLD;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,8 @@ namespace BankSystem.Login
                 return;
             }
             
+            clsGlobal.CurrentUser = user;
+
             Form frm = new frmMain(_frmLogin);
             frm.ShowDialog();
         }

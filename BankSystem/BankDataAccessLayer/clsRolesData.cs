@@ -1,4 +1,3 @@
-
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,42 +5,45 @@ using BankDataAccessLayer;
 
 public class clsRolesData
 {
-   
-
-
-    // 1. Get All Roles (Returns DataTable)
+    // 1. Get All Roles
     public static DataTable GetAllRoles()
     {
         DataTable dt = new DataTable();
+
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command = new SqlCommand("SP_GetAllRoles", connection))
         {
-            const string query = "SELECT * FROM Roles";
-            using (SqlCommand command = new SqlCommand(query, connection))
+            command.CommandType = CommandType.StoredProcedure;
+
+            try
             {
-                try
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows) dt.Load(reader);
-                    }
+                    if (reader.HasRows)
+                        dt.Load(reader);
                 }
-                catch (Exception ex) { throw new Exception("Error fetching all Roles", ex); }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching all Roles", ex);
             }
         }
+
         return dt;
     }
 
-    // 2. Get Info By ID (Find)
+    // 2. Get Role Info By ID
     public static bool GetRoleInfoByID(int RoleID, ref string Description)
     {
         bool isFound = false;
-        const string query = "SELECT * FROM Roles WHERE RoleID = @RoleID";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_GetRoleByID", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@RoleID", RoleID);
+
             try
             {
                 connection.Open();
@@ -51,47 +53,53 @@ public class clsRolesData
                     {
                         isFound = true;
                         Description = (string)reader["Description"];
-
                     }
                 }
             }
-            catch { isFound = false; }
+            catch
+            {
+                isFound = false;
+            }
         }
+
         return isFound;
     }
 
-    // 3. Is Role Exist
+    // 3. Check if Role Exists
     public static bool IsRoleExist(int RoleID)
     {
-        bool isFound = false;
-        const string query = "SELECT Found=1 FROM Roles WHERE RoleID = @RoleID";
+        bool exists = false;
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_IsRoleExist", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@RoleID", RoleID);
+
             try
             {
                 connection.Open();
                 object result = command.ExecuteScalar();
-                isFound = (result != null);
+                exists = (result != null && result != DBNull.Value);
             }
-            catch { isFound = false; }
+            catch
+            {
+                exists = false;
+            }
         }
-        return isFound;
+
+        return exists;
     }
 
     // 4. Add New Role
     public static int AddNewRole(string Description)
     {
         int newID = -1;
-        const string query = @"INSERT INTO Roles (Description) 
-                               VALUES (@Description); 
-                               SELECT SCOPE_IDENTITY();";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_AddNewRole", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@Description", Description);
 
             try
@@ -103,6 +111,7 @@ public class clsRolesData
             }
             catch { }
         }
+
         return newID;
     }
 
@@ -110,33 +119,44 @@ public class clsRolesData
     public static bool UpdateRole(int RoleID, string Description)
     {
         int rowsAffected = 0;
-        const string query = @"UPDATE Roles SET Description = @Description WHERE RoleID = @RoleID";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_UpdateRole", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@RoleID", RoleID);
             command.Parameters.AddWithValue("@Description", Description);
 
-            try { connection.Open(); rowsAffected = command.ExecuteNonQuery(); }
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
             catch { }
         }
-        return (rowsAffected > 0);
+
+        return rowsAffected > 0;
     }
 
     // 6. Delete Role
     public static bool DeleteRole(int RoleID)
     {
         int rowsAffected = 0;
-        const string query = "DELETE FROM Roles WHERE RoleID = @RoleID";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_DeleteRole", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@RoleID", RoleID);
-            try { connection.Open(); rowsAffected = command.ExecuteNonQuery(); }
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
             catch { }
         }
-        return (rowsAffected > 0);
+
+        return rowsAffected > 0;
     }
 }

@@ -32,7 +32,7 @@ public class clsApplicationStatus
     {
         string Description = "";
 
-        bool isFound = clsApplicationStatusesData.GetApplicationStatusesInfoByApplicationStatusID(ApplicationStatusID, ref Description);
+        bool isFound = clsApplicationStatusesData.GetApplicationStatusInfoByID(ApplicationStatusID, ref Description);
 
         if (isFound)
             return new clsApplicationStatus(ApplicationStatusID, Description);
@@ -60,13 +60,13 @@ public class clsApplicationStatus
 
     private bool _AddNewApplicationStatuses()
     {
-        this.ApplicationStatusID = clsApplicationStatusesData.AddNewApplicationStatuses(this.Description);
+        this.ApplicationStatusID = clsApplicationStatusesData.AddNewApplicationStatus(this.Description);
         return (this.ApplicationStatusID != -1);
     }
 
     private bool _UpdateApplicationStatuses()
     {
-        return clsApplicationStatusesData.UpdateApplicationStatuses(this.ApplicationStatusID, this.Description);
+        return clsApplicationStatusesData.UpdateApplicationStatus(this.ApplicationStatusID, this.Description);
     }
 
     public static DataTable GetAllApplicationStatuses()
@@ -76,7 +76,7 @@ public class clsApplicationStatus
 
     public static bool Delete(int ApplicationStatusID)
     {
-        return clsApplicationStatusesData.DeleteApplicationStatuses(ApplicationStatusID);
+        return clsApplicationStatusesData.DeleteApplicationStatus(ApplicationStatusID);
     }
 
 }

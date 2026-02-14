@@ -1,161 +1,204 @@
-
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using Bank_DataAccess;
 using BankDataAccessLayer;
 
 public class clsApplicationTypesData
 {
-   
- 
-
-
-   
+    // 1. Get All
     public static DataTable GetAllApplicationTypes()
     {
         DataTable dt = new DataTable();
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        {
-            const string query = "SELECT * FROM ApplicationTypes";
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                try
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows) dt.Load(reader);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error fetching all ApplicationTypess", ex);
-                }
-            }
-        }
-        return dt;
-    }
 
-    public static bool GetApplicationTypesInfoByApplicationTypeID(int ApplicationTypeID, ref string Description)
-    {
-        bool isFound = false;
-        const string query = "SELECT * FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
-
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_GetAllApplicationTypes", connection))
         {
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            command.CommandType = CommandType.StoredProcedure;
+
             try
             {
                 connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                        dt.Load(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
+        }
+
+        return dt;
+    }
+
+    // 2. Get By ID
+    public static bool GetApplicationTypeInfoByID(
+        int ApplicationTypeID,
+        ref string Description,
+        ref decimal ApplicationFees)
+    {
+        bool isFound = false;
+
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_GetApplicationTypeByID", connection))
+        {
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+            try
+            {
+                connection.Open();
+
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
                         isFound = true;
-                        Description = (string)reader["Description"];
-
+                        Description = reader["Description"].ToString();
+                        ApplicationFees = (decimal)reader["ApplicationFees"];
                     }
                 }
             }
-            catch (Exception ex) { throw new Exception("Error fetching ApplicationTypes info", ex); }
+            catch (Exception ex)
+            {
+                
+                isFound = false;
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
         }
+
         return isFound;
     }
 
-   
-    public static int AddNewApplicationTypes(string Description)
-    {
-        int newID = -1;
-        const string query = @"INSERT INTO ApplicationTypes (Description) 
-                               VALUES (@Description); 
-                               SELECT SCOPE_IDENTITY();";
-
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
-        {
-            command.Parameters.AddWithValue("@Description", Description);
-
-            try
-            {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int insertedID))
-                    newID = insertedID;
-            }
-            catch (Exception ex) { throw new Exception("Error adding ApplicationTypes", ex); }
-        }
-        return newID;
-    }
-
-
-    public static bool UpdateApplicationTypes(int ApplicationTypeID, string Description)
-    {
-        int rowsAffected = 0;
-        const string query = @"UPDATE ApplicationTypes 
-                               SET Description = @Description 
-                               WHERE ApplicationTypeID = @ApplicationTypeID";
-
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
-        {
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
-            command.Parameters.AddWithValue("@Description", Description);
-
-            try
-            {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception ex) { throw new Exception("Error updating ApplicationTypes", ex); }
-        }
-        return (rowsAffected > 0);
-    }
-
-  
-    public static bool DeleteApplicationTypes(int ApplicationTypeID)
-    {
-        int rowsAffected = 0;
-        const string query = "DELETE FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
-
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
-        {
-            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
-            try
-            {
-                connection.Open();
-                rowsAffected = command.ExecuteNonQuery();
-            }
-            catch (Exception ex) { throw new Exception("Error deleting ApplicationTypes", ex); }
-        }
-        return (rowsAffected > 0);
-    }
-
+    // 3. Is Exist
     public static bool IsApplicationTypeExist(int ApplicationTypeID)
     {
-        bool isFound = false;
-        const string query = "SELECT Found=1 FROM ApplicationTypes WHERE ApplicationTypeID = @ApplicationTypeID";
+        bool exists = false;
 
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_IsApplicationTypeExist", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
             try
             {
                 connection.Open();
+
                 object result = command.ExecuteScalar();
 
-                // ÅÐÇ áã íßä ÇáäÇÊÌ null¡ ÝåÐÇ íÚäí Ãä ÇáÓÌá ãæÌæÏ
-                isFound = (result != null);
+                if (result != null && result != DBNull.Value)
+                    exists = true;
             }
             catch (Exception ex)
             {
-                throw new Exception("Error checking if ApplicationTypes exists", ex);
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
             }
         }
-        return isFound;
+
+        return exists;
     }
 
+    // 4. Add New
+    public static int AddNewApplicationType(string Description, decimal ApplicationFees)
+    {
+        int newID = -1;
 
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_AddApplicationType", connection))
+        {
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@Description", Description);
+            command.Parameters.AddWithValue("@ApplicationFees", ApplicationFees);
+
+
+            try
+            {
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                    newID = insertedID;
+            }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
+        }
+
+        return newID;
+    }
+
+    // 5. Update
+    public static bool UpdateApplicationType(
+        int ApplicationTypeID,
+        string Description,
+         decimal ApplicationFees)
+    {
+        int rowsAffected = 0;
+
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_UpdateApplicationType", connection))
+        {
+            command.CommandType = CommandType.StoredProcedure;
+
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+            command.Parameters.AddWithValue("@Description", Description);
+            command.Parameters.AddWithValue("@ApplicationFees", ApplicationFees);
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
+        }
+
+        return (rowsAffected > 0);
+    }
+
+    // 6. Delete
+    public static bool DeleteApplicationType(int ApplicationTypeID)
+    {
+        int rowsAffected = 0;
+
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_DeleteApplicationType", connection))
+        {
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
+        }
+
+        return (rowsAffected > 0);
+    }
 }

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BankSystem.Accounts
+namespace BankSystem.Applications.Accounts
 {
-    public partial class frmAddUpdateAccount : Form
+    public partial class frmCloseAccountApplciation : Form
     {
-        public frmAddUpdateAccount()
+        public frmCloseAccountApplciation()
         {
             InitializeComponent();
         }

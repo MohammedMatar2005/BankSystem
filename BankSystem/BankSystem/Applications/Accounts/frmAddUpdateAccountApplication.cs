@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BankSystem.Applications
 {
-    public partial class frmAddUpdateApplication : Form
+    public partial class frmAddUpdateAccountApplication : Form
     {
-        public frmAddUpdateApplication()
+        public frmAddUpdateAccountApplication()
         {
             InitializeComponent();
         }

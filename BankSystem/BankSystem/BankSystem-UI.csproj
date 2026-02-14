@@ -41,17 +41,11 @@
     <Compile Include="Accounts\Controls\ctrlAccountInfoCard.Designer.cs">
       <DependentUpon>ctrlAccountInfoCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Accounts\frmFindAccount.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Accounts\Controls\ctrlAccountInfoCardWithFilter.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Accounts\frmFindAccount.Designer.cs">
-      <DependentUpon>frmFindAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Accounts\frmAddUpdateAccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Accounts\frmAddUpdateAccount.Designer.cs">
-      <DependentUpon>frmAddUpdateAccount.cs</DependentUpon>
+    <Compile Include="Accounts\Controls\ctrlAccountInfoCardWithFilter.Designer.cs">
+      <DependentUpon>ctrlAccountInfoCardWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Accounts\frmListAccounts.cs">
       <SubType>Form</SubType>
@@ -65,17 +59,35 @@
     <Compile Include="Accounts\frmShowAccountInfo.Designer.cs">
       <DependentUpon>frmShowAccountInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\frmAddUpdateApplication.cs">
+    <Compile Include="Applications\Accounts\frmAddUpdateAccountApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\frmAddUpdateApplication.Designer.cs">
-      <DependentUpon>frmAddUpdateApplication.cs</DependentUpon>
+    <Compile Include="Applications\Accounts\frmAddUpdateAccountApplication.Designer.cs">
+      <DependentUpon>frmAddUpdateAccountApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Applications\frmShowApplicationInfo.cs">
+    <Compile Include="Applications\Accounts\frmCloseAccountApplciation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Applications\frmShowApplicationInfo.Designer.cs">
-      <DependentUpon>frmShowApplicationInfo.cs</DependentUpon>
+    <Compile Include="Applications\Accounts\frmCloseAccountApplciation.Designer.cs">
+      <DependentUpon>frmCloseAccountApplciation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Accounts\frmShowAccountApplicationInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\Accounts\frmShowAccountApplicationInfo.Designer.cs">
+      <DependentUpon>frmShowAccountApplicationInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\Controls\ctrlApplicationCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Applications\Controls\ctrlApplicationCard.Designer.cs">
+      <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\ManageApplications\frmListApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\ManageApplications\frmListApplications.Designer.cs">
+      <DependentUpon>frmListApplications.cs</DependentUpon>
     </Compile>
     <Compile Include="Clients\Controls\ctrlClientInfo.cs">
       <SubType>UserControl</SubType>
@@ -198,6 +210,27 @@
     <Compile Include="Users\frmAddUpdateUser.Designer.cs">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Accounts\Controls\ctrlAccountInfoCard.resx">
+      <DependentUpon>ctrlAccountInfoCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Accounts\Controls\ctrlAccountInfoCardWithFilter.resx">
+      <DependentUpon>ctrlAccountInfoCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Accounts\frmAddUpdateAccountApplication.resx">
+      <DependentUpon>frmAddUpdateAccountApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Accounts\frmCloseAccountApplciation.resx">
+      <DependentUpon>frmCloseAccountApplciation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Accounts\frmShowAccountApplicationInfo.resx">
+      <DependentUpon>frmShowAccountApplicationInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\Controls\ctrlApplicationCard.resx">
+      <DependentUpon>ctrlApplicationCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\ManageApplications\frmListApplications.resx">
+      <DependentUpon>frmListApplications.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clients\Controls\ctrlClientInfo.resx">
       <DependentUpon>ctrlClientInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -425,7 +458,9 @@
     <None Include="Resources\sign_out.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Applications\Controls\" />
+    <Folder Include="Applications\ApplicationTypes\" />
+    <Folder Include="Applications\Creadit Cards\" />
+    <Folder Include="Applications\Loan, Finance\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\person_woman.png" />
@@ -450,6 +485,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Gemini_Generated_Image_368udd368udd368u.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets')" />

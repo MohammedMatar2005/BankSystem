@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BankSystem.Accounts.Controls
 {
-    public partial class frmFindAccount : Form
+    public partial class ctrlAccountInfoCardWithFilter : UserControl
     {
-        public frmFindAccount()
+        public ctrlAccountInfoCardWithFilter()
         {
             InitializeComponent();
         }

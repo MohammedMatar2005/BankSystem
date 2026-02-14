@@ -1,4 +1,3 @@
-
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,42 +5,44 @@ using BankDataAccessLayer;
 
 public class clsTransactionTypesData
 {
-  
-
-
-    // 1. Get All TransactionTypes (Returns DataTable)
+    // 1. Get All TransactionTypes
     public static DataTable GetAllTransactionTypes()
     {
         DataTable dt = new DataTable();
+
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command = new SqlCommand("SP_GetAllTransactionTypes", connection))
         {
-            const string query = "SELECT * FROM TransactionTypes";
-            using (SqlCommand command = new SqlCommand(query, connection))
+            command.CommandType = CommandType.StoredProcedure;
+
+            try
             {
-                try
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows) dt.Load(reader);
-                    }
+                    if (reader.HasRows) dt.Load(reader);
                 }
-                catch (Exception ex) { throw new Exception("Error fetching all TransactionTypes", ex); }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching all TransactionTypes", ex);
             }
         }
+
         return dt;
     }
 
-    // 2. Get Info By ID (Find)
+    // 2. Get TransactionType Info By ID
     public static bool GetTransactionTypeInfoByID(int TransactionTypeID, ref string TransactionName, ref string Description, ref int Effect, ref bool IsActive)
     {
         bool isFound = false;
-        const string query = "SELECT * FROM TransactionTypes WHERE TransactionTypeID = @TransactionTypeID";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_GetTransactionTypeByID", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@TransactionTypeID", TransactionTypeID);
+
             try
             {
                 connection.Open();
@@ -54,47 +55,48 @@ public class clsTransactionTypesData
                         Description = (string)reader["Description"];
                         Effect = (int)reader["Effect"];
                         IsActive = (bool)reader["IsActive"];
-
                     }
                 }
             }
             catch { isFound = false; }
         }
+
         return isFound;
     }
 
-    // 3. Is TransactionType Exist
+    // 3. Check if TransactionType Exists
     public static bool IsTransactionTypeExist(int TransactionTypeID)
     {
-        bool isFound = false;
-        const string query = "SELECT Found=1 FROM TransactionTypes WHERE TransactionTypeID = @TransactionTypeID";
+        bool exists = false;
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_IsTransactionTypeExist", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@TransactionTypeID", TransactionTypeID);
+
             try
             {
                 connection.Open();
                 object result = command.ExecuteScalar();
-                isFound = (result != null);
+                exists = (result != null && result != DBNull.Value);
             }
-            catch { isFound = false; }
+            catch { exists = false; }
         }
-        return isFound;
+
+        return exists;
     }
 
     // 4. Add New TransactionType
     public static int AddNewTransactionType(string TransactionName, string Description, int Effect, bool IsActive)
     {
         int newID = -1;
-        const string query = @"INSERT INTO TransactionTypes (TransactionName, Description, Effect, IsActive) 
-                               VALUES (@TransactionName, @Description, @Effect, @IsActive); 
-                               SELECT SCOPE_IDENTITY();";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_AddNewTransactionType", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
+
             command.Parameters.AddWithValue("@TransactionName", TransactionName);
             command.Parameters.AddWithValue("@Description", Description);
             command.Parameters.AddWithValue("@Effect", Effect);
@@ -109,6 +111,7 @@ public class clsTransactionTypesData
             }
             catch { }
         }
+
         return newID;
     }
 
@@ -116,36 +119,48 @@ public class clsTransactionTypesData
     public static bool UpdateTransactionType(int TransactionTypeID, string TransactionName, string Description, int Effect, bool IsActive)
     {
         int rowsAffected = 0;
-        const string query = @"UPDATE TransactionTypes SET TransactionName = @TransactionName, Description = @Description, Effect = @Effect, IsActive = @IsActive WHERE TransactionTypeID = @TransactionTypeID";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_UpdateTransactionType", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
+
             command.Parameters.AddWithValue("@TransactionTypeID", TransactionTypeID);
             command.Parameters.AddWithValue("@TransactionName", TransactionName);
             command.Parameters.AddWithValue("@Description", Description);
             command.Parameters.AddWithValue("@Effect", Effect);
             command.Parameters.AddWithValue("@IsActive", IsActive);
 
-            try { connection.Open(); rowsAffected = command.ExecuteNonQuery(); }
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
             catch { }
         }
-        return (rowsAffected > 0);
+
+        return rowsAffected > 0;
     }
 
     // 6. Delete TransactionType
     public static bool DeleteTransactionType(int TransactionTypeID)
     {
         int rowsAffected = 0;
-        const string query = "DELETE FROM TransactionTypes WHERE TransactionTypeID = @TransactionTypeID";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_DeleteTransactionType", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@TransactionTypeID", TransactionTypeID);
-            try { connection.Open(); rowsAffected = command.ExecuteNonQuery(); }
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
             catch { }
         }
-        return (rowsAffected > 0);
+
+        return rowsAffected > 0;
     }
 }

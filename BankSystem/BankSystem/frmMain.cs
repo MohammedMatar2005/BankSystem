@@ -1,4 +1,6 @@
-﻿using BankSystem.Clients;
+﻿using BankSystem.Applications;
+using BankSystem.Applications.ManageApplications;
+using BankSystem.Clients;
 using BankSystem.People;
 using BankSystem.Users;
 using DVLD;
@@ -112,6 +114,23 @@ namespace BankSystem
         private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frm = new frmChangePassword(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
+        }
+
+        private void loanFinancingApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolManageApplicationTypes_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmListApplications();
+            frm.ShowDialog();   
+        }
+
+        private void currentAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmAddUpdateAccountApplication();
             frm.ShowDialog();
         }
     }

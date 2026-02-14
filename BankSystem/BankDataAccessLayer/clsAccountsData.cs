@@ -1,150 +1,237 @@
-
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using Bank_DataAccess;
 using BankDataAccessLayer;
 
 public class clsAccountsData
 {
-
-
-    // 1. Get All Accounts (Returns DataTable)
+    // 1. Get All Accounts
     public static DataTable GetAllAccounts()
     {
         DataTable dt = new DataTable();
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        {
-            const string query = "SELECT * FROM Accounts";
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                try
-                {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows) dt.Load(reader);
-                    }
-                }
-                catch (Exception ex) { throw new Exception("Error fetching all Accounts", ex); }
-            }
-        }
-        return dt;
-    }
 
-    // 2. Get Info By ID (Find)
-    public static bool GetAccountInfoByID(int AccountID, ref int ClientID, ref string AccountNumber, ref string Password, ref decimal Balance)
-    {
-        bool isFound = false;
-        const string query = "SELECT * FROM Accounts WHERE AccountID = @AccountID";
-
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_GetAllAccounts", connection))
         {
-            command.Parameters.AddWithValue("@AccountID", AccountID);
+            command.CommandType = CommandType.StoredProcedure;
+
             try
             {
                 connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                        dt.Load(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching accounts", ex);
+            }
+        }
+
+        return dt;
+    }
+
+    // 2. Get Account By ID
+    public static bool GetAccountInfoByID(
+        int AccountID,
+        ref int ClientID,
+        ref string AccountNumber,
+        ref string Password,
+        ref decimal Balance,
+        ref string PinCode,
+        ref int CurrencyID)
+    {
+        bool isFound = false;
+
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_GetAccountByID", connection))
+        {
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@AccountID", AccountID);
+
+            try
+            {
+                connection.Open();
+
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
                         isFound = true;
-                        ClientID = (int)reader["ClientID"];
-                        AccountNumber = (string)reader["AccountNumber"];
-                        Password = (string)reader["Password"];
-                        Balance = (decimal)reader["Balance"];
 
+                        ClientID = (int)reader["ClientID"];
+                        AccountNumber = reader["AccountNumber"].ToString();
+                        Password = reader["Password"].ToString();
+                        Balance = Convert.ToDecimal(reader["Balance"]);
+                        PinCode = reader["PinCode"].ToString();
+                        CurrencyID = (int)reader["CurrencyID"];
                     }
                 }
             }
-            catch { isFound = false; }
+            catch
+            {
+                isFound = false;
+            }
         }
+
         return isFound;
     }
 
     // 3. Is Account Exist
     public static bool IsAccountExist(int AccountID)
     {
-        bool isFound = false;
-        const string query = "SELECT Found=1 FROM Accounts WHERE AccountID = @AccountID";
+        bool exists = false;
 
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_IsAccountExist", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
+
             command.Parameters.AddWithValue("@AccountID", AccountID);
+
             try
             {
                 connection.Open();
+
                 object result = command.ExecuteScalar();
-                isFound = (result != null);
+
+                if (result != null && result != DBNull.Value)
+                    exists = true;
             }
-            catch { isFound = false; }
+            catch (Exception ex)
+            {
+                throw new Exception("Error checking account existence", ex);
+            }
         }
-        return isFound;
+
+        return exists;
     }
 
-    // 4. Add New Account
-    public static int AddNewAccount(int ClientID, string AccountNumber, string Password, decimal Balance)
-    {
-        int newID = -1;
-        const string query = @"INSERT INTO Accounts (ClientID, AccountNumber, Password, Balance) 
-                               VALUES (@ClientID, @AccountNumber, @Password, @Balance); 
-                               SELECT SCOPE_IDENTITY();";
 
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+    // 4. Add New Account
+    public static int AddNewAccount(
+        
+        int ClientID,
+        string AccountNumber,
+        string Password,
+        decimal Balance,
+        string PinCode,
+        int CurrencyID)
+    {
+        int AccountID = -1;
+
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_AddAccount", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
+
             command.Parameters.AddWithValue("@ClientID", ClientID);
             command.Parameters.AddWithValue("@AccountNumber", AccountNumber);
             command.Parameters.AddWithValue("@Password", Password);
             command.Parameters.AddWithValue("@Balance", Balance);
+            command.Parameters.AddWithValue("@PinCode", PinCode);
+            command.Parameters.AddWithValue("@CurrencyID", CurrencyID);
+
+          
+             
 
             try
             {
                 connection.Open();
+
                 object result = command.ExecuteScalar();
+
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
-                    newID = insertedID;
+                {
+                    AccountID = insertedID;
+                }
             }
-            catch { }
+            catch(Exception ex) 
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
         }
-        return newID;
+
+        return AccountID;
     }
 
     // 5. Update Account
-    public static bool UpdateAccount(int AccountID, int ClientID, string AccountNumber, string Password, decimal Balance)
+    public static bool UpdateAccount(
+        int AccountID,
+        int ClientID,
+        string AccountNumber,
+        string Password,
+        decimal Balance,
+        string PinCode,
+        int CurrencyID)
     {
-        int rowsAffected = 0;
-        const string query = @"UPDATE Accounts SET ClientID = @ClientID, AccountNumber = @AccountNumber, Password = @Password, Balance = @Balance WHERE AccountID = @AccountID";
+        bool success = false;
 
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_UpdateAccount", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
+
             command.Parameters.AddWithValue("@AccountID", AccountID);
             command.Parameters.AddWithValue("@ClientID", ClientID);
             command.Parameters.AddWithValue("@AccountNumber", AccountNumber);
             command.Parameters.AddWithValue("@Password", Password);
             command.Parameters.AddWithValue("@Balance", Balance);
+            command.Parameters.AddWithValue("@PinCode", PinCode);
+            command.Parameters.AddWithValue("@CurrencyID", CurrencyID);
 
-            try { connection.Open(); rowsAffected = command.ExecuteNonQuery(); }
-            catch { }
+            try
+            {
+                connection.Open();
+                success = (command.ExecuteNonQuery() > 0);
+            }
+            catch
+            {
+                success = false;
+            }
         }
-        return (rowsAffected > 0);
+
+        return success;
     }
 
     // 6. Delete Account
     public static bool DeleteAccount(int AccountID)
     {
-        int rowsAffected = 0;
-        const string query = "DELETE FROM Accounts WHERE AccountID = @AccountID";
+        bool success = false;
 
-        using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlConnection connection =
+            new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command =
+            new SqlCommand("SP_DeleteAccount", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@AccountID", AccountID);
-            try { connection.Open(); rowsAffected = command.ExecuteNonQuery(); }
-            catch { }
+
+            try
+            {
+                connection.Open();
+                success = (command.ExecuteNonQuery() > 0);
+            }
+            catch
+            {
+                success = false;
+            }
         }
-        return (rowsAffected > 0);
+
+        return success;
     }
 }

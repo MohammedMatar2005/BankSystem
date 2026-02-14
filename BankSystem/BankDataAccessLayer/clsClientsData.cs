@@ -1,4 +1,3 @@
-
 using Bank_DataAccess;
 using BankDataAccessLayer;
 using System;
@@ -7,41 +6,45 @@ using System.Data.SqlClient;
 
 public class clsClientsData
 {
-
-
-    // 1. Get All Clients (Returns DataTable)
+    // 1. Get All Clients
     public static DataTable GetAllClients()
     {
         DataTable dt = new DataTable();
+
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
+        using (SqlCommand command = new SqlCommand("SP_GetAllClients", connection))
         {
-            const string query = "SELECT * FROM Clients";
-            using (SqlCommand command = new SqlCommand(query, connection))
+            command.CommandType = CommandType.StoredProcedure;
+
+            try
             {
-                try
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows) dt.Load(reader);
-                    }
+                    if (reader.HasRows)
+                        dt.Load(reader);
                 }
-                catch (Exception ex) { EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error); }
+            }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
             }
         }
+
         return dt;
     }
 
-    // 2. Get Info By ID (Find)
+    // 2. Get Client Info By ID
     public static bool GetClientInfoByID(int ClientID, ref int PersonID, ref DateTime ClientRegistrationDate, ref int CreatedByUserID)
     {
         bool isFound = false;
-        const string query = "SELECT * FROM Clients WHERE ClientID = @ClientID";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_GetClientByID", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@ClientID", ClientID);
+
             try
             {
                 connection.Open();
@@ -53,47 +56,55 @@ public class clsClientsData
                         PersonID = (int)reader["PersonID"];
                         ClientRegistrationDate = (DateTime)reader["ClientRegistrationDate"];
                         CreatedByUserID = (int)reader["CreatedByUserID"];
-
                     }
                 }
             }
-            catch { isFound = false; }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+                isFound = false;
+            }
         }
+
         return isFound;
     }
 
-    // 3. Is Client Exist
+    // 3. Check if Client Exists
     public static bool IsClientExist(int ClientID)
     {
-        bool isFound = false;
-        const string query = "SELECT Found=1 FROM Clients WHERE ClientID = @ClientID";
+        bool exists = false;
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_IsClientExist", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@ClientID", ClientID);
+
             try
             {
                 connection.Open();
                 object result = command.ExecuteScalar();
-                isFound = (result != null);
+                exists = (result != null && result != DBNull.Value);
             }
-            catch { isFound = false; }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+                exists = false;
+            }
         }
-        return isFound;
+
+        return exists;
     }
 
     // 4. Add New Client
     public static int AddNewClient(int PersonID, DateTime ClientRegistrationDate, int CreatedByUserID)
     {
         int newID = -1;
-        const string query = @"INSERT INTO Clients (PersonID, ClientRegistrationDate, CreatedByUserID) 
-                               VALUES (@PersonID, @ClientRegistrationDate, @CreatedByUserID); 
-                               SELECT SCOPE_IDENTITY();";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_AddNewClient", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@PersonID", PersonID);
             command.Parameters.AddWithValue("@ClientRegistrationDate", ClientRegistrationDate);
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
@@ -105,8 +116,12 @@ public class clsClientsData
                 if (result != null && int.TryParse(result.ToString(), out int insertedID))
                     newID = insertedID;
             }
-            catch (Exception ex) { EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error); }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
         }
+
         return newID;
     }
 
@@ -114,35 +129,52 @@ public class clsClientsData
     public static bool UpdateClient(int ClientID, int PersonID, DateTime ClientRegistrationDate, int CreatedByUserID)
     {
         int rowsAffected = 0;
-        const string query = @"UPDATE Clients SET PersonID = @PersonID, ClientRegistrationDate = @ClientRegistrationDate, CreatedByUserID = @CreatedByUserID WHERE ClientID = @ClientID";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_UpdateClient", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@ClientID", ClientID);
             command.Parameters.AddWithValue("@PersonID", PersonID);
             command.Parameters.AddWithValue("@ClientRegistrationDate", ClientRegistrationDate);
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
 
-            try { connection.Open(); rowsAffected = command.ExecuteNonQuery(); }
-            catch (Exception ex) { EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error); }
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
         }
-        return (rowsAffected > 0);
+
+        return rowsAffected > 0;
     }
 
     // 6. Delete Client
     public static bool DeleteClient(int ClientID)
     {
         int rowsAffected = 0;
-        const string query = "DELETE FROM Clients WHERE ClientID = @ClientID";
 
         using (SqlConnection connection = new SqlConnection(DataAccessSettings.ConnectionString))
-        using (SqlCommand command = new SqlCommand(query, connection))
+        using (SqlCommand command = new SqlCommand("SP_DeleteClient", connection))
         {
+            command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@ClientID", ClientID);
-            try { connection.Open(); rowsAffected = command.ExecuteNonQuery(); }
-            catch(Exception ex) { EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error); }
+
+            try
+            {
+                connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                EventLogger.Log(ex.ToString(), System.Diagnostics.EventLogEntryType.Error);
+            }
         }
-        return (rowsAffected > 0);
+
+        return rowsAffected > 0;
     }
 }

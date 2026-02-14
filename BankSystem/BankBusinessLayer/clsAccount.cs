@@ -13,6 +13,9 @@ public class clsAccount
     public string Password { get; set; }
     public decimal Balance { get; set; }
 
+    public string PinCode { get; set; }
+    public int CurrencyID { get; set; }
+
 
     public clsAccount()
     {
@@ -22,9 +25,11 @@ public class clsAccount
         this.Password = "";
         this.Balance = 0;
         Mode = enMode.AddNew;
+            PinCode = "";
+            CurrencyID = -1;
     }
 
-    private clsAccount(int AccountID, int ClientID, string AccountNumber, string Password, decimal Balance)
+    private clsAccount(int AccountID, int ClientID, string AccountNumber, string Password, decimal Balance, string pinCode, int currencyID)
     {
         this.AccountID = AccountID;
         this.ClientID = ClientID;
@@ -33,6 +38,8 @@ public class clsAccount
         this.Balance = Balance;
 
         Mode = enMode.Update;
+        PinCode = pinCode;
+        CurrencyID = currencyID;
     }
 
     public static clsAccount Find(int AccountID)
@@ -41,11 +48,13 @@ public class clsAccount
         string AccountNumber = "";
         string Password = "";
         decimal Balance = 0;
+        string PinCode = "";
+        int CurrencyID = -1;
 
-        bool isFound = clsAccountsData.GetAccountInfoByID(AccountID, ref ClientID, ref AccountNumber, ref Password, ref Balance);
+        bool isFound = clsAccountsData.GetAccountInfoByID(AccountID, ref ClientID, ref AccountNumber, ref Password, ref Balance, ref PinCode, ref CurrencyID);
 
         if (isFound)
-            return new clsAccount(AccountID, ClientID, AccountNumber, Password, Balance);
+            return new clsAccount(AccountID, ClientID, AccountNumber, Password, Balance, PinCode, CurrencyID);
         else
             return null;
     }
@@ -70,13 +79,13 @@ public class clsAccount
 
     private bool _AddNewAccount()
     {
-        this.AccountID = clsAccountsData.AddNewAccount(this.ClientID, this.AccountNumber, this.Password, this.Balance);
+        this.AccountID = clsAccountsData.AddNewAccount(this.ClientID, this.AccountNumber, this.Password, this.Balance, this.PinCode, this.CurrencyID);
         return (this.AccountID != -1);
     }
 
     private bool _UpdateAccount()
     {
-        return clsAccountsData.UpdateAccount(this.AccountID, this.ClientID, this.AccountNumber, this.Password, this.Balance);
+        return clsAccountsData.UpdateAccount(this.AccountID, this.ClientID, this.AccountNumber, this.Password, this.Balance, this.PinCode, this.CurrencyID);
     }
 
     public static DataTable GetAllAccounts()
