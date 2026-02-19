@@ -45,8 +45,7 @@ public class clsApplicationsData
         ref DateTime ApplicationDateTime,
         ref int ApplicationStatusID,
         ref DateTime LastStatusDate,
-        ref int CreatedByUserID,
-        ref decimal PaidFees)
+        ref int CreatedByUserID)
     {
         bool isFound = false;
 
@@ -74,7 +73,6 @@ public class clsApplicationsData
                         ApplicationStatusID = (int)reader["ApplicationStatusID"];
                         LastStatusDate = (DateTime)reader["LastStatusDate"];
                         CreatedByUserID = (int)reader["CreatedByUserID"];
-                        PaidFees = (decimal)reader["PaidFees"];
                     }
                 }
             }
@@ -125,8 +123,8 @@ public class clsApplicationsData
         DateTime ApplicationDateTime,
         int ApplicationStatusID,
         DateTime LastStatusDate,
-        int CreatedByUserID,
-        decimal PaidFees)
+        int CreatedByUserID
+        )
     {
         int newID = -1;
 
@@ -143,7 +141,6 @@ public class clsApplicationsData
             command.Parameters.AddWithValue("@ApplicationStatusID", ApplicationStatusID);
             command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
-            command.Parameters.AddWithValue("@PaidFees", PaidFees);
 
             try
             {
@@ -171,8 +168,8 @@ public class clsApplicationsData
         DateTime ApplicationDateTime,
         int ApplicationStatusID,
         DateTime LastStatusDate,
-        int CreatedByUserID,
-        decimal PaidFees)
+        int CreatedByUserID
+       )
     {
         int rowsAffected = 0;
 
@@ -190,7 +187,6 @@ public class clsApplicationsData
             command.Parameters.AddWithValue("@ApplicationStatusID", ApplicationStatusID);
             command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
             command.Parameters.AddWithValue("@CreatedByUserID", CreatedByUserID);
-            command.Parameters.AddWithValue("@PaidFees", PaidFees);
 
             try
             {

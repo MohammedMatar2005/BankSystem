@@ -8,6 +8,11 @@ public class clsApplication
     public enum enMode { AddNew = 0, Update = 1 };
     public enMode Mode = enMode.AddNew;
 
+    public enum enApplicationType
+    {
+        
+    }
+
     public int ApplicationID { get; set; }
     public int ApplicationTypeID { get; set; }
     public int PersonID { get; set; }
@@ -15,6 +20,24 @@ public class clsApplication
     public int ApplicationStatusID { get; set; }
     public DateTime LastStatusDate { get; set; }
     public int CreatedByUserID { get; set; }
+
+    public decimal ApplicationFees
+    {
+        get
+        {
+            clsApplicationType applicationType = clsApplicationType.Find(this.ApplicationTypeID);
+            if (applicationType != null)
+                return applicationType.ApplicationFees;
+            else
+                return 0;
+        }
+        set
+        {
+
+        }
+        
+        
+    }
 
 
     public clsApplication()
@@ -26,6 +49,7 @@ public class clsApplication
         this.DateTime = DateTime.Now;
         this.LastStatusDate = DateTime.Now;
         this.CreatedByUserID = -1;
+        this.ApplicationFees = 0;
         Mode = enMode.AddNew;
     }
 
@@ -38,9 +62,13 @@ public class clsApplication
         this.ApplicationStatusID = ApplicationStatusID;
         this.LastStatusDate = LastStatusDate;
         this.CreatedByUserID = CreatedByUserID;
+        this.ApplicationFees = clsApplicationType.Find(ApplicationTypeID).ApplicationFees;
 
         Mode = enMode.Update;
     }
+
+
+    // Private Constructor ·«” Œœ«„Â ›Ì „ÌÀÊœ Find (Ê÷⁄ «· ⁄œÌ·)
 
     public static clsApplication Find(int ApplicationID)
     {
@@ -79,7 +107,10 @@ public class clsApplication
 
     private bool _AddNewApplication()
     {
-        this.ApplicationID = clsApplicationsData.AddNewApplication(this.ApplicationTypeID, this.PersonID, this.DateTime, this.ApplicationStatusID, this.LastStatusDate, this.CreatedByUserID);
+        this.ApplicationID = clsApplicationsData.AddNewApplication(this.ApplicationTypeID, this.PersonID,
+            this.DateTime, this.ApplicationStatusID,
+            this.LastStatusDate, this.CreatedByUserID);
+
         return (this.ApplicationID != -1);
     }
 

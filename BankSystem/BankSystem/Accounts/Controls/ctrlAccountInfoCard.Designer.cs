@@ -47,6 +47,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
             this.lblPersonID = new System.Windows.Forms.Label();
+            this.pnlStatusAccent = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // lblBirthDate
@@ -248,10 +249,20 @@
             this.lblPersonID.TabIndex = 35;
             this.lblPersonID.Text = "N/A";
             // 
+            // pnlStatusAccent
+            // 
+            this.pnlStatusAccent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.pnlStatusAccent.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlStatusAccent.Location = new System.Drawing.Point(0, 0);
+            this.pnlStatusAccent.Name = "pnlStatusAccent";
+            this.pnlStatusAccent.Size = new System.Drawing.Size(5, 278);
+            this.pnlStatusAccent.TabIndex = 36;
+            // 
             // ctrlAccountInfoCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pnlStatusAccent);
             this.Controls.Add(this.lblPersonID);
             this.Controls.Add(this.lblBirthDate);
             this.Controls.Add(this.label10);
@@ -299,5 +310,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.Label lblPersonID;
+        private System.Windows.Forms.Panel pnlStatusAccent;
     }
 }

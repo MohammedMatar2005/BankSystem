@@ -492,6 +492,60 @@
   <ItemGroup>
     <None Include="Resources\company %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\web-optimization.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\web-optimization %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\finance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\classification.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\atm-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loan1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\classification1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\assets.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accounting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open-account.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete-account.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\change.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asset %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\personal-information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reset-password.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.5.3.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

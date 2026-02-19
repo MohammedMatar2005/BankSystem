@@ -32,6 +32,9 @@ namespace BankSystem
         {
             this.components = new System.ComponentModel.Container();
             this.msMainMenu = new System.Windows.Forms.MenuStrip();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.pictureBoxBackground = new System.Windows.Forms.PictureBox();
             this.menuApplications = new System.Windows.Forms.ToolStripMenuItem();
             this.subMenuDeposit = new System.Windows.Forms.ToolStripMenuItem();
             this.openNewAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,9 +57,6 @@ namespace BankSystem
             this.currentUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.pictureBoxBackground = new System.Windows.Forms.PictureBox();
             this.msMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackground)).BeginInit();
             this.SuspendLayout();
@@ -80,6 +80,31 @@ namespace BankSystem
             this.msMainMenu.Size = new System.Drawing.Size(282, 749);
             this.msMainMenu.TabIndex = 1;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(3, 2);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = null;
+            // 
+            // pictureBoxBackground
+            // 
+            this.pictureBoxBackground.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxBackground.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxBackground.Location = new System.Drawing.Point(285, 0);
+            this.pictureBoxBackground.Name = "pictureBoxBackground";
+            this.pictureBoxBackground.Size = new System.Drawing.Size(1390, 788);
+            this.pictureBoxBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxBackground.TabIndex = 0;
+            this.pictureBoxBackground.TabStop = false;
+            // 
             // menuApplications
             // 
             this.menuApplications.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -99,14 +124,14 @@ namespace BankSystem
             // 
             // subMenuDeposit
             // 
-            this.subMenuDeposit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.subMenuDeposit.BackColor = System.Drawing.Color.White;
             this.subMenuDeposit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openNewAccountToolStripMenuItem,
             this.closeAccountToolStripMenuItem,
             this.accountTypeConversionToolStripMenuItem});
             this.subMenuDeposit.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subMenuDeposit.ForeColor = System.Drawing.Color.Black;
-            this.subMenuDeposit.Image = global::BankSystem.Properties.Resources.deposit;
+            this.subMenuDeposit.Image = global::BankSystem.Properties.Resources.finance;
             this.subMenuDeposit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.subMenuDeposit.Name = "subMenuDeposit";
             this.subMenuDeposit.Size = new System.Drawing.Size(387, 38);
@@ -120,57 +145,71 @@ namespace BankSystem
             this.SavingAccountToolStripMenuItem});
             this.openNewAccountToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openNewAccountToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.openNewAccountToolStripMenuItem.Image = global::BankSystem.Properties.Resources.open_account;
+            this.openNewAccountToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.openNewAccountToolStripMenuItem.Name = "openNewAccountToolStripMenuItem";
-            this.openNewAccountToolStripMenuItem.Size = new System.Drawing.Size(336, 34);
+            this.openNewAccountToolStripMenuItem.Size = new System.Drawing.Size(352, 38);
             this.openNewAccountToolStripMenuItem.Text = "Open New Account";
             // 
             // currentAccountToolStripMenuItem
             // 
             this.currentAccountToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.currentAccountToolStripMenuItem.Image = global::BankSystem.Properties.Resources.assets;
+            this.currentAccountToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.currentAccountToolStripMenuItem.Name = "currentAccountToolStripMenuItem";
-            this.currentAccountToolStripMenuItem.Size = new System.Drawing.Size(249, 34);
+            this.currentAccountToolStripMenuItem.Size = new System.Drawing.Size(265, 38);
             this.currentAccountToolStripMenuItem.Text = "Current Account";
             this.currentAccountToolStripMenuItem.Click += new System.EventHandler(this.currentAccountToolStripMenuItem_Click);
             // 
             // SavingAccountToolStripMenuItem
             // 
             this.SavingAccountToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.SavingAccountToolStripMenuItem.Image = global::BankSystem.Properties.Resources.accounting;
+            this.SavingAccountToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SavingAccountToolStripMenuItem.Name = "SavingAccountToolStripMenuItem";
-            this.SavingAccountToolStripMenuItem.Size = new System.Drawing.Size(249, 34);
+            this.SavingAccountToolStripMenuItem.Size = new System.Drawing.Size(265, 38);
             this.SavingAccountToolStripMenuItem.Text = "Savings Account";
             // 
             // closeAccountToolStripMenuItem
             // 
             this.closeAccountToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closeAccountToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.closeAccountToolStripMenuItem.Image = global::BankSystem.Properties.Resources.delete_account;
+            this.closeAccountToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.closeAccountToolStripMenuItem.Name = "closeAccountToolStripMenuItem";
-            this.closeAccountToolStripMenuItem.Size = new System.Drawing.Size(336, 34);
+            this.closeAccountToolStripMenuItem.Size = new System.Drawing.Size(352, 38);
             this.closeAccountToolStripMenuItem.Text = "Close Account";
             // 
             // accountTypeConversionToolStripMenuItem
             // 
             this.accountTypeConversionToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.accountTypeConversionToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.accountTypeConversionToolStripMenuItem.Image = global::BankSystem.Properties.Resources.change;
+            this.accountTypeConversionToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.accountTypeConversionToolStripMenuItem.Name = "accountTypeConversionToolStripMenuItem";
-            this.accountTypeConversionToolStripMenuItem.Size = new System.Drawing.Size(336, 34);
+            this.accountTypeConversionToolStripMenuItem.Size = new System.Drawing.Size(352, 38);
             this.accountTypeConversionToolStripMenuItem.Text = "Account Type Conversion";
             // 
             // manageApplicationsToolStripMenuItem
             // 
+            this.manageApplicationsToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.manageApplicationsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.manageApplicationsToolStripMenuItem.Image = global::BankSystem.Properties.Resources.web_optimization__2_;
+            this.manageApplicationsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.manageApplicationsToolStripMenuItem.Name = "manageApplicationsToolStripMenuItem";
             this.manageApplicationsToolStripMenuItem.Size = new System.Drawing.Size(387, 38);
             this.manageApplicationsToolStripMenuItem.Text = "Manage Applications";
             // 
             // subMenuWithdraw
             // 
+            this.subMenuWithdraw.BackColor = System.Drawing.Color.White;
             this.subMenuWithdraw.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.creditCardRequestToolStripMenuItem,
             this.renewCreditCardToolStripMenuItem,
             this.replaceToolStripMenuItem});
             this.subMenuWithdraw.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subMenuWithdraw.ForeColor = System.Drawing.Color.Black;
-            this.subMenuWithdraw.Image = global::BankSystem.Properties.Resources.withdrawal;
+            this.subMenuWithdraw.Image = global::BankSystem.Properties.Resources.atm_card;
             this.subMenuWithdraw.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.subMenuWithdraw.Name = "subMenuWithdraw";
             this.subMenuWithdraw.Size = new System.Drawing.Size(387, 38);
@@ -180,28 +219,37 @@ namespace BankSystem
             // creditCardRequestToolStripMenuItem
             // 
             this.creditCardRequestToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.creditCardRequestToolStripMenuItem.Image = global::BankSystem.Properties.Resources.asset__1_;
+            this.creditCardRequestToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.creditCardRequestToolStripMenuItem.Name = "creditCardRequestToolStripMenuItem";
-            this.creditCardRequestToolStripMenuItem.Size = new System.Drawing.Size(280, 34);
+            this.creditCardRequestToolStripMenuItem.Size = new System.Drawing.Size(296, 38);
             this.creditCardRequestToolStripMenuItem.Text = "Credit Card Request";
             // 
             // renewCreditCardToolStripMenuItem
             // 
             this.renewCreditCardToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.renewCreditCardToolStripMenuItem.Image = global::BankSystem.Properties.Resources._switch;
+            this.renewCreditCardToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.renewCreditCardToolStripMenuItem.Name = "renewCreditCardToolStripMenuItem";
-            this.renewCreditCardToolStripMenuItem.Size = new System.Drawing.Size(280, 34);
+            this.renewCreditCardToolStripMenuItem.Size = new System.Drawing.Size(296, 38);
             this.renewCreditCardToolStripMenuItem.Text = "Renew Credit Card";
             // 
             // replaceToolStripMenuItem
             // 
             this.replaceToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.replaceToolStripMenuItem.Image = global::BankSystem.Properties.Resources.card;
+            this.replaceToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(280, 34);
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(296, 38);
             this.replaceToolStripMenuItem.Text = "Replace Credit Card";
             // 
             // loanFinancingApplicationsToolStripMenuItem
             // 
+            this.loanFinancingApplicationsToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.loanFinancingApplicationsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loanFinancingApplicationsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.loanFinancingApplicationsToolStripMenuItem.Image = global::BankSystem.Properties.Resources.loan1;
+            this.loanFinancingApplicationsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.loanFinancingApplicationsToolStripMenuItem.Name = "loanFinancingApplicationsToolStripMenuItem";
             this.loanFinancingApplicationsToolStripMenuItem.Size = new System.Drawing.Size(387, 38);
             this.loanFinancingApplicationsToolStripMenuItem.Text = "Loan, Financing Applications";
@@ -209,7 +257,9 @@ namespace BankSystem
             // 
             // toolManageApplicationTypes
             // 
+            this.toolManageApplicationTypes.BackColor = System.Drawing.Color.White;
             this.toolManageApplicationTypes.ForeColor = System.Drawing.Color.Black;
+            this.toolManageApplicationTypes.Image = global::BankSystem.Properties.Resources.classification1;
             this.toolManageApplicationTypes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolManageApplicationTypes.Name = "toolManageApplicationTypes";
             this.toolManageApplicationTypes.Size = new System.Drawing.Size(387, 38);
@@ -282,16 +332,20 @@ namespace BankSystem
             // currentUserInfoToolStripMenuItem
             // 
             this.currentUserInfoToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.currentUserInfoToolStripMenuItem.Image = global::BankSystem.Properties.Resources.personal_information;
+            this.currentUserInfoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.currentUserInfoToolStripMenuItem.Name = "currentUserInfoToolStripMenuItem";
-            this.currentUserInfoToolStripMenuItem.Size = new System.Drawing.Size(258, 34);
+            this.currentUserInfoToolStripMenuItem.Size = new System.Drawing.Size(274, 38);
             this.currentUserInfoToolStripMenuItem.Text = "Current User Info";
             this.currentUserInfoToolStripMenuItem.Click += new System.EventHandler(this.currentUserInfoToolStripMenuItem_Click);
             // 
             // changePasswordToolStripMenuItem
             // 
             this.changePasswordToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.changePasswordToolStripMenuItem.Image = global::BankSystem.Properties.Resources.reset_password;
+            this.changePasswordToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(258, 34);
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(274, 38);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
             this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
             // 
@@ -306,31 +360,6 @@ namespace BankSystem
             this.LogoutToolStripMenuItem1.Size = new System.Drawing.Size(269, 68);
             this.LogoutToolStripMenuItem1.Text = "Logout";
             this.LogoutToolStripMenuItem1.Click += new System.EventHandler(this.LogoutToolStripMenuItem1_Click);
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(3, 2);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = null;
-            // 
-            // pictureBoxBackground
-            // 
-            this.pictureBoxBackground.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxBackground.BackColor = System.Drawing.Color.Black;
-            this.pictureBoxBackground.Location = new System.Drawing.Point(285, 0);
-            this.pictureBoxBackground.Name = "pictureBoxBackground";
-            this.pictureBoxBackground.Size = new System.Drawing.Size(1390, 788);
-            this.pictureBoxBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxBackground.TabIndex = 0;
-            this.pictureBoxBackground.TabStop = false;
             // 
             // frmMain
             // 
