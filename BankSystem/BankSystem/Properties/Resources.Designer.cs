@@ -374,6 +374,16 @@ namespace BankSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap loupe {
+            get {
+                object obj = ResourceManager.GetObject("loupe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lucid_origin_A_modern_and_elegant_banking_system_interface_background_suitable_for_a_Windows__0 {
             get {
                 object obj = ResourceManager.GetObject("lucid-origin_A_modern_and_elegant_banking_system_interface_background_suitable_fo" +
@@ -459,6 +469,16 @@ namespace BankSystem.Properties {
         internal static System.Drawing.Bitmap personal_information {
             get {
                 object obj = ResourceManager.GetObject("personal-information", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap plus {
+            get {
+                object obj = ResourceManager.GetObject("plus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

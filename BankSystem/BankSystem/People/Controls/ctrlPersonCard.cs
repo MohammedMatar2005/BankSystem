@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace BankSystem.Users.Controls
+namespace BankSystem.People.Controls
 {
     public partial class ctrlPersonCard : UserControl
     {
         private int _PersonID;
 
         public int PersonID
-        {
+		{
             get { return _PersonID; }
             set {}
         }
@@ -26,7 +26,7 @@ namespace BankSystem.Users.Controls
         private clsPerson _Person;
 
         public clsPerson Person
-        {
+		{
             get { return _Person; }
             set {}
         }
@@ -36,10 +36,10 @@ namespace BankSystem.Users.Controls
             InitializeComponent();
         }
 
-        public void LoadPerson(int personID)
+        public void LoadPerson(int PersonID)
         {
-            _PersonID = personID;
-            _Person = clsPerson.Find(_PersonID);
+			_PersonID = PersonID;
+			_Person = clsPerson.Find(_PersonID);
 
             if (_Person == null)
             {
@@ -67,9 +67,9 @@ namespace BankSystem.Users.Controls
         private void _LoadPersonImage()
         {
             if (_Person.Gender == Convert.ToBoolean(1))
-                pbPersonImage.Image = Resources.man;
+				pbPersonImage.Image = Resources.man;
             else
-                pbPersonImage.Image = Resources.person_woman;
+				pbPersonImage.Image = Resources.person_woman;
 
             string ImagePath = _Person.ImagePath;
             if (ImagePath != "")
@@ -91,7 +91,7 @@ namespace BankSystem.Users.Controls
             lblEmail.Text = "[Email]";
             lblNationality.Text = "[Nationality Id]";
             lblPhone.Text = "[Phone Number]";
-            lblPersonID.Text = "[Person ID]";
+            lblPersonID.Text = "[Account ID]";
             lblNationalNo.Text = "[National No]";
             lblGender.Text = "[Gender]";
             pbPersonImage.Image = Resources.man;

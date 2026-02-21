@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctrlPersonCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
+            this.ctrlPersonCard1 = new BankSystem.People.Controls.ctrlPersonCard();
             this.gbLoginDetails = new System.Windows.Forms.GroupBox();
             this.lblIsActive = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -117,7 +117,7 @@
 
         #endregion
 
-        private ctrlPersonCard ctrlPersonCard1;
+        private People.Controls.ctrlPersonCard ctrlPersonCard1;
         private System.Windows.Forms.GroupBox gbLoginDetails;
         private System.Windows.Forms.Label lblIsActive;
         private System.Windows.Forms.Label label3;

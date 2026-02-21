@@ -36,7 +36,7 @@
             this.lblID = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlUserCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
+            this.ctrlUserCard1 = new BankSystem.People.Controls.ctrlPersonCard();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -159,6 +159,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
-        private Users.Controls.ctrlPersonCard ctrlUserCard1;
+        private People.Controls.ctrlPersonCard ctrlUserCard1;
     }
 }

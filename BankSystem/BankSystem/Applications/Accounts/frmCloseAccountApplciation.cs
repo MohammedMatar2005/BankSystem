@@ -12,9 +12,27 @@ namespace BankSystem.Applications.Accounts
 {
     public partial class frmCloseAccountApplciation : Form
     {
+        private int _AccountID;
+        private clsAccount _Account;
         public frmCloseAccountApplciation()
         {
-            InitializeComponent();
+            InitializeComponent();    
+        }
+
+        public void IsReadyToClose()
+        {
+            _Account = clsAccount.Find(_AccountID);
+            
+             if (_AccountID == -1)
+             {
+                MessageBox.Show("");
+                 return;
+             }
+        }
+
+        private void frmCloseAccountApplciation_Load(object sender, EventArgs e)
+        {
+          
         }
     }
 }

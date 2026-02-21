@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ctrlPersonCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
+            this.ctrlPersonCard1 = new BankSystem.People.Controls.ctrlPersonCard();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
@@ -178,7 +178,7 @@
 
         #endregion
 
-        private Controls.ctrlPersonCard ctrlPersonCard1;
+        private People.Controls.ctrlPersonCard ctrlPersonCard1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCurrentPassword;
         private System.Windows.Forms.TextBox txtNewPassword;

@@ -35,7 +35,7 @@
             this.lblRegistrationDate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ctrlPersonCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
+            this.ctrlPersonCard1 = new BankSystem.People.Controls.ctrlPersonCard();
             this.gbClientInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,7 +146,7 @@
 
         #endregion
 
-        private Users.Controls.ctrlPersonCard ctrlPersonCard1;
+        private People.Controls.ctrlPersonCard ctrlPersonCard1;
         private System.Windows.Forms.GroupBox gbClientInfo;
         private System.Windows.Forms.Label lblAccountsCount; // حقل عدد الحسابات
         private System.Windows.Forms.Label label3;

@@ -14,13 +14,14 @@ namespace BankSystem.Login
 {
     public partial class frmLoginWithCode : Form
     {
-        private frmLogin _frmLogin = null;
+        
         public frmLoginWithCode()
         {
             InitializeComponent();
+           
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLoginWithCode_Click(object sender, EventArgs e)
         {
             string LoginCode  = txtLoginCode.Text.Trim();
 
@@ -30,10 +31,11 @@ namespace BankSystem.Login
                 MessageBox.Show("There is no User Associated with this code", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
-            clsGlobal.CurrentUser = user;
 
-            Form frm = new frmMain(_frmLogin);
+            clsGlobal.CurrentUser = user;
+            this.Hide();
+
+            Form frm = new frmMain(this);
             frm.ShowDialog();
         }
 

@@ -41,7 +41,7 @@ public class clsApplicationsData
     public static bool GetApplicationInfoByID(
         int ApplicationID,
         ref int ApplicationTypeID,
-        ref int PersonID,
+        ref int AccountID,
         ref DateTime ApplicationDateTime,
         ref int ApplicationStatusID,
         ref DateTime LastStatusDate,
@@ -68,7 +68,7 @@ public class clsApplicationsData
                         isFound = true;
 
                         ApplicationTypeID = (int)reader["ApplicationTypeID"];
-                        PersonID = (int)reader["PersonID"];
+                        AccountID = (int)reader["AccountID"];
                         ApplicationDateTime = (DateTime)reader["DateTime"];
                         ApplicationStatusID = (int)reader["ApplicationStatusID"];
                         LastStatusDate = (DateTime)reader["LastStatusDate"];
@@ -119,7 +119,7 @@ public class clsApplicationsData
     // 4. Add New Application
     public static int AddNewApplication(
         int ApplicationTypeID,
-        int PersonID,
+        int AccountID,
         DateTime ApplicationDateTime,
         int ApplicationStatusID,
         DateTime LastStatusDate,
@@ -136,7 +136,7 @@ public class clsApplicationsData
             command.CommandType = CommandType.StoredProcedure;
 
             command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
-            command.Parameters.AddWithValue("@PersonID", PersonID);
+            command.Parameters.AddWithValue("@AccountID", AccountID);
             command.Parameters.AddWithValue("@DateTime", ApplicationDateTime);
             command.Parameters.AddWithValue("@ApplicationStatusID", ApplicationStatusID);
             command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);
@@ -164,7 +164,7 @@ public class clsApplicationsData
     public static bool UpdateApplication(
         int ApplicationID,
         int ApplicationTypeID,
-        int PersonID,
+        int AccountID,
         DateTime ApplicationDateTime,
         int ApplicationStatusID,
         DateTime LastStatusDate,
@@ -182,7 +182,7 @@ public class clsApplicationsData
 
             command.Parameters.AddWithValue("@ApplicationID", ApplicationID);
             command.Parameters.AddWithValue("@ApplicationTypeID", ApplicationTypeID);
-            command.Parameters.AddWithValue("@PersonID", PersonID);
+            command.Parameters.AddWithValue("@AccountID", AccountID);
             command.Parameters.AddWithValue("@DateTime", ApplicationDateTime);
             command.Parameters.AddWithValue("@ApplicationStatusID", ApplicationStatusID);
             command.Parameters.AddWithValue("@LastStatusDate", LastStatusDate);

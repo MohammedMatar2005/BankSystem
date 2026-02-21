@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankSystem.Users.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,11 @@ namespace BankSystem.People
         private int _PersonID;
 
         private clsPerson _Person;
-        public frmShowPersonInfo(int personID)
+        public frmShowPersonInfo(int PersonID)
         {
             InitializeComponent();
-            _PersonID = personID;
-            _Person = clsPerson.Find(_PersonID);
+			_PersonID = PersonID;
+			_Person = clsPerson.Find(_PersonID);
         }
 
         

@@ -32,9 +32,6 @@ namespace BankSystem
         {
             this.components = new System.ComponentModel.Container();
             this.msMainMenu = new System.Windows.Forms.MenuStrip();
-            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.pictureBoxBackground = new System.Windows.Forms.PictureBox();
             this.menuApplications = new System.Windows.Forms.ToolStripMenuItem();
             this.subMenuDeposit = new System.Windows.Forms.ToolStripMenuItem();
             this.openNewAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +54,9 @@ namespace BankSystem
             this.currentUserInfoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LogoutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.lblTitle = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.pictureBoxBackground = new System.Windows.Forms.PictureBox();
             this.msMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackground)).BeginInit();
             this.SuspendLayout();
@@ -79,31 +79,6 @@ namespace BankSystem
             this.msMainMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.msMainMenu.Size = new System.Drawing.Size(282, 749);
             this.msMainMenu.TabIndex = 1;
-            // 
-            // guna2DragControl1
-            // 
-            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(3, 2);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = null;
-            // 
-            // pictureBoxBackground
-            // 
-            this.pictureBoxBackground.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBoxBackground.BackColor = System.Drawing.Color.Black;
-            this.pictureBoxBackground.Location = new System.Drawing.Point(285, 0);
-            this.pictureBoxBackground.Name = "pictureBoxBackground";
-            this.pictureBoxBackground.Size = new System.Drawing.Size(1390, 788);
-            this.pictureBoxBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxBackground.TabIndex = 0;
-            this.pictureBoxBackground.TabStop = false;
             // 
             // menuApplications
             // 
@@ -179,6 +154,7 @@ namespace BankSystem
             this.closeAccountToolStripMenuItem.Name = "closeAccountToolStripMenuItem";
             this.closeAccountToolStripMenuItem.Size = new System.Drawing.Size(352, 38);
             this.closeAccountToolStripMenuItem.Text = "Close Account";
+            this.closeAccountToolStripMenuItem.Click += new System.EventHandler(this.closeAccountToolStripMenuItem_Click);
             // 
             // accountTypeConversionToolStripMenuItem
             // 
@@ -360,6 +336,31 @@ namespace BankSystem
             this.LogoutToolStripMenuItem1.Size = new System.Drawing.Size(269, 68);
             this.LogoutToolStripMenuItem1.Text = "Logout";
             this.LogoutToolStripMenuItem1.Click += new System.EventHandler(this.LogoutToolStripMenuItem1_Click);
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(3, 2);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = null;
+            // 
+            // pictureBoxBackground
+            // 
+            this.pictureBoxBackground.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxBackground.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxBackground.Location = new System.Drawing.Point(285, 0);
+            this.pictureBoxBackground.Name = "pictureBoxBackground";
+            this.pictureBoxBackground.Size = new System.Drawing.Size(1390, 788);
+            this.pictureBoxBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxBackground.TabIndex = 0;
+            this.pictureBoxBackground.TabStop = false;
             // 
             // frmMain
             // 

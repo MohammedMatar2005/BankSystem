@@ -1,4 +1,5 @@
 ﻿using BankSystem.Applications;
+using BankSystem.Applications.Accounts;
 using BankSystem.Applications.ManageApplications;
 using BankSystem.Clients;
 using BankSystem.People;
@@ -23,8 +24,6 @@ namespace BankSystem
         {
             InitializeComponent();
             _frmLogin = frm;
-
-
 
         }
 
@@ -131,6 +130,12 @@ namespace BankSystem
         private void currentAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frm = new frmAddUpdateAccountApplication();
+            frm.ShowDialog();
+        }
+
+        private void closeAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new frmCloseAccountApplciation();
             frm.ShowDialog();
         }
     }

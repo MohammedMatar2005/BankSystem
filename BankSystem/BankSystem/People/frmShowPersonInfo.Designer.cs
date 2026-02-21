@@ -31,7 +31,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblHeaderTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlPersonCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
+            this.ctrlPersonCard1 = new BankSystem.People.Controls.ctrlPersonCard();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             this.lblHeaderTitle.Name = "lblHeaderTitle";
             this.lblHeaderTitle.Size = new System.Drawing.Size(253, 37);
             this.lblHeaderTitle.TabIndex = 0;
-            this.lblHeaderTitle.Text = "Person Information";
+            this.lblHeaderTitle.Text = "Account Information";
             // 
             // btnClose
             // 
@@ -70,17 +70,17 @@
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // ctrlPersonCard1
+            // ctrlAccountCard1
             // 
             this.ctrlPersonCard1.BackColor = System.Drawing.Color.Transparent;
             this.ctrlPersonCard1.Location = new System.Drawing.Point(15, 100);
-            this.ctrlPersonCard1.Name = "ctrlPersonCard1";
+            this.ctrlPersonCard1.Name = "ctrlAccountCard1";
             this.ctrlPersonCard1.Person = null;
             this.ctrlPersonCard1.PersonID = 0;
             this.ctrlPersonCard1.Size = new System.Drawing.Size(780, 240);
             this.ctrlPersonCard1.TabIndex = 0;
             // 
-            // frmShowPersonInfo
+            // frmShowAccountInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,9 +92,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmShowPersonInfo";
+            this.Name = "frmShowAccountInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Person Inofrmation";
+            this.Text = "Account Inofrmation";
             this.Load += new System.EventHandler(this.frmShowPersonInfo_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
@@ -104,7 +104,7 @@
 
         #endregion
 
-        private Users.Controls.ctrlPersonCard ctrlPersonCard1;
+        private People.Controls.ctrlPersonCard ctrlPersonCard1;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblHeaderTitle;
         private System.Windows.Forms.Button btnClose;

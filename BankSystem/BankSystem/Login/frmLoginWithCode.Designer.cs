@@ -80,7 +80,7 @@
             this.btnLogin.Size = new System.Drawing.Size(157, 45);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.btnLoginWithCode_Click);
             // 
             // guna2btnExit
             // 

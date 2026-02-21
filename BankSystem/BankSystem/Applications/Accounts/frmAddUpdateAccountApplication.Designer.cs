@@ -34,7 +34,7 @@ namespace BankSystem.Applications
             this.lblHeaderTitle = new System.Windows.Forms.Label();
             this.tcApplication = new System.Windows.Forms.TabControl();
             this.tpPersonInfo = new System.Windows.Forms.TabPage();
-            this.ctrlPersonCard1 = new BankSystem.Users.Controls.ctrlPersonCard();
+            this.ctrlPersonCard1 = new BankSystem.People.Controls.ctrlPersonCard();
             this.btnNext = new System.Windows.Forms.Button();
             this.tpAccountInfo = new System.Windows.Forms.TabPage();
             this.gbAccountDetails = new System.Windows.Forms.GroupBox();
@@ -340,7 +340,7 @@ namespace BankSystem.Applications
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
-        private Users.Controls.ctrlPersonCard ctrlPersonCard1;
+        private People.Controls.ctrlPersonCard ctrlPersonCard1;
 
         private System.Windows.Forms.Label lblInitialBalance;
         private System.Windows.Forms.NumericUpDown numInitialBalance;

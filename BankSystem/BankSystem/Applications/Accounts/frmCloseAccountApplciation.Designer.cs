@@ -59,17 +59,35 @@
             this.lblHeaderTitle.ForeColor = System.Drawing.Color.White;
             this.lblHeaderTitle.Location = new System.Drawing.Point(265, 20);
             this.lblHeaderTitle.Name = "lblHeaderTitle";
-            this.lblHeaderTitle.Size = new System.Drawing.Size(301, 37);
+            this.lblHeaderTitle.Size = new System.Drawing.Size(259, 37);
             this.lblHeaderTitle.TabIndex = 0;
             this.lblHeaderTitle.Text = "Close Bank Account";
             // 
-            // ctrlAccountInfoCardWithFilter1
+            // btnClose
             // 
-            this.ctrlAccountInfoCardWithFilter1.BackColor = System.Drawing.Color.White;
-            this.ctrlAccountInfoCardWithFilter1.Location = new System.Drawing.Point(39, 90);
-            this.ctrlAccountInfoCardWithFilter1.Name = "ctrlAccountInfoCardWithFilter1";
-            this.ctrlAccountInfoCardWithFilter1.Size = new System.Drawing.Size(739, 388);
-            this.ctrlAccountInfoCardWithFilter1.TabIndex = 0;
+            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(512, 648);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(130, 45);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Cancel";
+            this.btnClose.UseVisualStyleBackColor = false;
+            // 
+            // btnConfirmClose
+            // 
+            this.btnConfirmClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnConfirmClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmClose.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnConfirmClose.ForeColor = System.Drawing.Color.White;
+            this.btnConfirmClose.Location = new System.Drawing.Point(648, 648);
+            this.btnConfirmClose.Name = "btnConfirmClose";
+            this.btnConfirmClose.Size = new System.Drawing.Size(130, 45);
+            this.btnConfirmClose.TabIndex = 3;
+            this.btnConfirmClose.Text = "Confirm Close";
+            this.btnConfirmClose.UseVisualStyleBackColor = false;
             // 
             // gbClosureDetails
             // 
@@ -98,7 +116,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(26, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 19);
+            this.label2.Size = new System.Drawing.Size(108, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Closure Reason:";
             // 
@@ -109,7 +127,7 @@
             this.lblBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblBalance.Location = new System.Drawing.Point(141, 35);
             this.lblBalance.Name = "lblBalance";
-            this.lblBalance.Size = new System.Drawing.Size(55, 21);
+            this.lblBalance.Size = new System.Drawing.Size(54, 21);
             this.lblBalance.TabIndex = 1;
             this.lblBalance.Text = "0.00 $";
             // 
@@ -118,37 +136,19 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(26, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 19);
+            this.label1.Size = new System.Drawing.Size(87, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Net Balance:";
             // 
-            // btnConfirmClose
+            // ctrlAccountInfoCardWithFilter1
             // 
-            this.btnConfirmClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btnConfirmClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmClose.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnConfirmClose.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmClose.Location = new System.Drawing.Point(648, 648);
-            this.btnConfirmClose.Name = "btnConfirmClose";
-            this.btnConfirmClose.Size = new System.Drawing.Size(130, 45);
-            this.btnConfirmClose.TabIndex = 3;
-            this.btnConfirmClose.Text = "Confirm Close";
-            this.btnConfirmClose.UseVisualStyleBackColor = false;
+            this.ctrlAccountInfoCardWithFilter1.BackColor = System.Drawing.Color.White;
+            this.ctrlAccountInfoCardWithFilter1.Location = new System.Drawing.Point(39, 90);
+            this.ctrlAccountInfoCardWithFilter1.Name = "ctrlAccountInfoCardWithFilter1";
+            this.ctrlAccountInfoCardWithFilter1.Size = new System.Drawing.Size(739, 388);
+            this.ctrlAccountInfoCardWithFilter1.TabIndex = 0;
             // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(512, 648);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(130, 45);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Cancel";
-            this.btnClose.UseVisualStyleBackColor = false;
-            // 
-            // frmCloseAccountApplication
+            // frmCloseAccountApplciation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,9 +161,10 @@
             this.Controls.Add(this.ctrlAccountInfoCardWithFilter1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "frmCloseAccountApplication";
+            this.Name = "frmCloseAccountApplciation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Close Bank Account";
+            this.Load += new System.EventHandler(this.frmCloseAccountApplciation_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             this.gbClosureDetails.ResumeLayout(false);

@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbFilters = new System.Windows.Forms.GroupBox();
-            this.btnAddNewAccount = new System.Windows.Forms.Button();
-            this.btnFind = new System.Windows.Forms.Button();
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.cbFilterBy = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.ctrlAccountInfoCard1 = new BankSystem.Accounts.ctrlAccountInfoCard();
+            this.btnAddNewAccount = new System.Windows.Forms.Button();
+            this.btnFind = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlAccountCard1 = new BankSystem.Accounts.Controls.ctrlAccountCard();
             this.gbFilters.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // gbFilters
@@ -48,30 +51,10 @@
             this.gbFilters.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.gbFilters.Location = new System.Drawing.Point(3, 5);
             this.gbFilters.Name = "gbFilters";
-            this.gbFilters.Size = new System.Drawing.Size(730, 90);
+            this.gbFilters.Size = new System.Drawing.Size(787, 90);
             this.gbFilters.TabIndex = 1;
             this.gbFilters.TabStop = false;
             this.gbFilters.Text = "Filter Accounts";
-            // 
-            // btnAddNewAccount
-            // 
-            this.btnAddNewAccount.BackColor = System.Drawing.Color.White;
-            this.btnAddNewAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNewAccount.Location = new System.Drawing.Point(575, 25);
-            this.btnAddNewAccount.Name = "btnAddNewAccount";
-            this.btnAddNewAccount.Size = new System.Drawing.Size(50, 50);
-            this.btnAddNewAccount.TabIndex = 3;
-            this.btnAddNewAccount.UseVisualStyleBackColor = false;
-            // 
-            // btnFind
-            // 
-            this.btnFind.BackColor = System.Drawing.Color.White;
-            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFind.Location = new System.Drawing.Point(515, 25);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(50, 50);
-            this.btnFind.TabIndex = 2;
-            this.btnFind.UseVisualStyleBackColor = false;
             // 
             // txtFilterValue
             // 
@@ -104,36 +87,65 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Find By:";
             // 
-            // ctrlAccountInfoCard1
+            // btnAddNewAccount
             // 
-            this.ctrlAccountInfoCard1.Location = new System.Drawing.Point(3, 105);
-            this.ctrlAccountInfoCard1.Name = "ctrlAccountInfoCard1";
-            this.ctrlAccountInfoCard1.Size = new System.Drawing.Size(730, 280);
-            this.ctrlAccountInfoCard1.TabIndex = 0;
+            this.btnAddNewAccount.BackColor = System.Drawing.Color.White;
+            this.btnAddNewAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddNewAccount.Image = global::BankSystem.Properties.Resources.plus;
+            this.btnAddNewAccount.Location = new System.Drawing.Point(614, 24);
+            this.btnAddNewAccount.Name = "btnAddNewAccount";
+            this.btnAddNewAccount.Size = new System.Drawing.Size(50, 50);
+            this.btnAddNewAccount.TabIndex = 3;
+            this.btnAddNewAccount.UseVisualStyleBackColor = false;
+            // 
+            // btnFind
+            // 
+            this.btnFind.BackColor = System.Drawing.Color.White;
+            this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFind.Image = global::BankSystem.Properties.Resources.loupe;
+            this.btnFind.Location = new System.Drawing.Point(554, 24);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(50, 50);
+            this.btnFind.TabIndex = 2;
+            this.btnFind.UseVisualStyleBackColor = false;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // ctrlAccountCard1
+            // 
+            this.ctrlAccountCard1.BackColor = System.Drawing.Color.White;
+            this.ctrlAccountCard1.Location = new System.Drawing.Point(0, 101);
+            this.ctrlAccountCard1.Name = "ctrlAccountCard1";
+            this.ctrlAccountCard1.Size = new System.Drawing.Size(790, 399);
+            this.ctrlAccountCard1.TabIndex = 2;
             // 
             // ctrlAccountInfoCardWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.ctrlAccountCard1);
             this.Controls.Add(this.gbFilters);
-            this.Controls.Add(this.ctrlAccountInfoCard1);
             this.Name = "ctrlAccountInfoCardWithFilter";
-            this.Size = new System.Drawing.Size(739, 388);
+            this.Size = new System.Drawing.Size(795, 507);
+            this.Validating += new System.ComponentModel.CancelEventHandler(this.ctrlAccountInfoCardWithFilter_Validating);
             this.gbFilters.ResumeLayout(false);
             this.gbFilters.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private ctrlAccountInfoCard ctrlAccountInfoCard1;
         private System.Windows.Forms.GroupBox gbFilters;
         private System.Windows.Forms.Button btnAddNewAccount;
         private System.Windows.Forms.Button btnFind;
         private System.Windows.Forms.TextBox txtFilterValue;
         private System.Windows.Forms.ComboBox cbFilterBy;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private ctrlAccountCard ctrlAccountCard1;
     }
 }

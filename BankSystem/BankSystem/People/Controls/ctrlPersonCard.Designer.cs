@@ -1,4 +1,4 @@
-﻿namespace BankSystem.Users.Controls
+﻿namespace BankSystem.People.Controls
 {
     partial class ctrlPersonCard
     {

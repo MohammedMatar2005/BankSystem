@@ -31,7 +31,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblHeaderTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.ctrlAccountInfoCard1 = new BankSystem.Accounts.ctrlAccountInfoCard();
+            this.ctrlAccountInfoCard1 = new BankSystem.Accounts.Controls.ctrlAccountCard();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +100,7 @@
 
         #endregion
 
-        private BankSystem.Accounts.ctrlAccountInfoCard ctrlAccountInfoCard1;
+        private BankSystem.Accounts.Controls.ctrlAccountCard ctrlAccountInfoCard1;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblHeaderTitle;
         private System.Windows.Forms.Button btnClose;
